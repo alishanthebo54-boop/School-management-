@@ -3,327 +3,234 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moon Star School Management</title>
+<title>Moon Star Public High School Khanwahan</title>
 
 <style>
 *{box-sizing:border-box}
 
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f1f5f9;
-color:#1e293b;
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f1f5f9;
+    color:#1e293b;
 }
 
 header{
-background:linear-gradient(135deg,#075985,#0284c7);
-color:white;
-text-align:center;
-padding:22px 10px;
+    background:linear-gradient(135deg,#1d4ed8,#2563eb);
+    color:white;
+    padding:22px 15px;
+    text-align:center;
 }
 
 header h1{
-margin:0;
-font-size:22px;
+    margin:0;
+    font-size:23px;
 }
 
 header p{
-margin:7px 0 0;
-font-size:15px;
+    margin:7px 0 0;
+    font-size:15px;
 }
 
 .container{
-max-width:950px;
-margin:auto;
-padding:18px;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
 }
 
 .dashboard{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:15px;
 }
 
 .menu-card{
-background:white;
-border-radius:15px;
-padding:25px 10px;
-text-align:center;
-box-shadow:0 3px 12px rgba(0,0,0,.10);
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-user-select:none;
+    background:white;
+    border-radius:15px;
+    padding:25px 12px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    cursor:pointer;
+    transition:.2s;
+    font-weight:bold;
 }
 
-.menu-card:active{
-transform:scale(.97);
+.menu-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 7px 18px rgba(0,0,0,.13);
 }
 
-.icon{
-font-size:32px;
-margin-bottom:8px;
+.menu-card .icon{
+    font-size:38px;
+    margin-bottom:10px;
 }
 
 .section{
-display:none;
+    display:none;
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
 }
 
 .section.active{
-display:block;
+    display:block;
+}
+
+.section h2{
+    margin-top:0;
+    color:#1d4ed8;
 }
 
 .back{
-display:inline-block;
-background:#475569;
-color:white;
-padding:11px 18px;
-border-radius:8px;
-margin-bottom:15px;
-cursor:pointer;
-}
-
-.card{
-background:white;
-padding:18px;
-border-radius:14px;
-box-shadow:0 3px 12px rgba(0,0,0,.08);
-margin-bottom:18px;
-}
-
-h2{
-margin-top:0;
-color:#075985;
-}
-
-label{
-display:block;
-font-weight:bold;
-margin:12px 0 6px;
+    background:#64748b;
+    color:white;
+    border:0;
+    border-radius:8px;
+    padding:10px 16px;
+    cursor:pointer;
+    margin-bottom:15px;
 }
 
 input,select{
-width:100%;
-padding:12px;
-border:1px solid #cbd5e1;
-border-radius:8px;
-font-size:16px;
-background:white;
+    width:100%;
+    padding:11px;
+    margin:6px 0 12px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    font-size:15px;
 }
 
 button{
-border:0;
-padding:11px 16px;
-border-radius:8px;
-font-size:15px;
-cursor:pointer;
-margin:4px;
+    border:0;
+    border-radius:8px;
+    padding:10px 16px;
+    cursor:pointer;
+    font-size:14px;
 }
 
-.primary{background:#0284c7;color:white}
-.success{background:#16a34a;color:white}
-.danger{background:#dc2626;color:white}
-.secondary{background:#475569;color:white}
-
-.student{
-border:1px solid #cbd5e1;
-border-radius:12px;
-padding:12px;
-margin:10px 0;
-background:#f8fafc;
+.primary{
+    background:#2563eb;
+    color:white;
 }
 
-.student img{
-width:60px;
-height:60px;
-object-fit:cover;
-border-radius:8px;
-float:left;
-margin-right:12px;
+.success{
+    background:#16a34a;
+    color:white;
 }
 
-.clear{
-clear:both;
+.danger{
+    background:#dc2626;
+    color:white;
 }
 
-.seat{
-display:flex;
-align-items:center;
-gap:15px;
-border:1px solid #cbd5e1;
-padding:12px;
-border-radius:10px;
-margin:8px 0;
-background:white;
+.gray{
+    background:#64748b;
+    color:white;
 }
 
-.seatno{
-background:#075985;
-color:white;
-font-size:20px;
-font-weight:bold;
-padding:14px;
-border-radius:8px;
-min-width:65px;
-text-align:center;
-}
-
-.table-wrap{
-overflow-x:auto;
+.form-box{
+    background:#f8fafc;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:20px;
 }
 
 table{
-width:100%;
-border-collapse:collapse;
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
 }
 
 th,td{
-border:1px solid #cbd5e1;
-padding:8px;
-text-align:center;
+    border:1px solid #cbd5e1;
+    padding:9px;
+    text-align:center;
 }
 
 th{
-background:#075985;
-color:white;
+    background:#e2e8f0;
+}
+
+.small-btn{
+    padding:6px 9px;
+    font-size:12px;
+}
+
+.message{
+    margin-top:10px;
+    padding:10px;
+    border-radius:8px;
+    background:#dcfce7;
+    color:#166534;
+    display:none;
+}
+
+.report-card{
+    border:1px solid #cbd5e1;
+    border-radius:12px;
+    padding:15px;
+    margin-top:15px;
+}
+
+.slip-area{
+    margin-top:20px;
+}
+
+.slip{
+    border:2px solid #2563eb;
+    border-radius:10px;
+    padding:12px;
+    margin-bottom:15px;
+    page-break-inside:avoid;
+}
+
+.slip h3{
+    margin:0 0 5px;
+    color:#1d4ed8;
+}
+
+.slip p{
+    margin:5px 0;
 }
 
 .tt-input{
-min-width:100px;
-padding:7px;
-}
-
-#slips{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:8mm;
-background:white;
-padding:5mm;
-}
-
-.slip{
-border:2px solid #075985;
-border-radius:10px;
-overflow:hidden;
-min-height:125mm;
-background:white;
-}
-
-.slip-head{
-background:linear-gradient(135deg,#075985,#0284c7);
-color:white;
-text-align:center;
-padding:9px 5px;
-}
-
-.slip-head strong{
-font-size:14px;
-}
-
-.slip-head small{
-display:block;
-margin-top:3px;
-}
-
-.slip-title{
-text-align:center;
-background:#e0f2fe;
-color:#075985;
-font-weight:bold;
-padding:5px;
-}
-
-.slip-body{
-padding:8px;
-font-size:10px;
-}
-
-.student-data{
-display:flex;
-gap:8px;
-align-items:center;
-margin-bottom:7px;
-}
-
-.student-data img,
-.no-photo{
-width:48px;
-height:55px;
-border:1px solid #94a3b8;
-border-radius:5px;
-object-fit:cover;
-}
-
-.no-photo{
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:22px;
-background:#f1f5f9;
-}
-
-.slip-table{
-font-size:7px;
-margin-top:5px;
-}
-
-.slip-table th,
-.slip-table td{
-padding:3px;
-}
-
-@media(max-width:600px){
-
-.dashboard{
-grid-template-columns:1fr 1fr;
-}
-
-#slips{
-grid-template-columns:1fr;
-}
-
+    width:100%;
+    margin:0;
+    padding:7px;
 }
 
 @media print{
+    header,
+    .no-print,
+    .back,
+    .form-box,
+    button{
+        display:none!important;
+    }
 
-body{
-background:white;
-}
+    body{
+        background:white;
+    }
 
-header,
-#dashboard,
-#studentsSection,
-#seatSection,
-#timetableSection,
-#resultsSection,
-#reportsSection,
-#settingsSection,
-.back,
-.no-print{
-display:none!important;
-}
+    .section{
+        display:none!important;
+        box-shadow:none;
+    }
 
-#slipSection{
-display:block!important;
-}
+    #slipCard.active{
+        display:block!important;
+    }
 
-#slips{
-display:grid!important;
-grid-template-columns:1fr 1fr;
-gap:6mm;
-padding:3mm;
-width:210mm;
-}
+    .slip-area{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+    }
 
-.slip{
-min-height:128mm;
-}
-
-@page{
-size:A4 portrait;
-margin:5mm;
-}
-
+    .slip{
+        margin:0;
+    }
 }
 </style>
 </head>
@@ -331,272 +238,241 @@ margin:5mm;
 <body>
 
 <header>
-<h1>🏫 Moon Star Public High School Khanwahan</h1>
-<p>School Management System</p>
+    <h1>🏫 Moon Star Public High School Khanwahan</h1>
+    <p>School Management System</p>
 </header>
 
 <div class="container">
 
 <!-- DASHBOARD -->
-
 <div id="dashboard" class="section active">
 
-<div class="dashboard">
+    <div class="dashboard">
 
-<div class="menu-card" onclick="openPage('students')">
-<div class="icon">👨‍🎓</div>
-Students
-</div>
+        <div class="menu-card" onclick="openPage('students')">
+            <div class="icon">👨‍🎓</div>
+            Students
+        </div>
 
-<div class="menu-card" onclick="openPage('seats')">
-<div class="icon">🪑</div>
-Seat Allotment
-</div>
+        <div class="menu-card" onclick="openPage('seat')">
+            <div class="icon">🪑</div>
+            Seat Allotment
+        </div>
 
-<div class="menu-card" onclick="openPage('slip')">
-<div class="icon">🎫</div>
-Slip Card
-</div>
+        <div class="menu-card" onclick="openPage('slipCard')">
+            <div class="icon">🎫</div>
+            Slip Card
+        </div>
 
-<div class="menu-card" onclick="openPage('timetable')">
-<div class="icon">📅</div>
-Time Table
-</div>
+        <div class="menu-card" onclick="openPage('timetable')">
+            <div class="icon">📅</div>
+            Time Table
+        </div>
 
-<div class="menu-card" onclick="openPage('results')">
-<div class="icon">📝</div>
-Results
-</div>
+        <div class="menu-card" onclick="openPage('results')">
+            <div class="icon">📝</div>
+            Results
+        </div>
 
-<div class="menu-card" onclick="openPage('reports')">
-<div class="icon">📊</div>
-Reports
-</div>
+        <div class="menu-card" onclick="openPage('reports')">
+            <div class="icon">📊</div>
+            Reports
+        </div>
 
-<div class="menu-card" onclick="openPage('settings')">
-<div class="icon">⚙️</div>
-Settings
-</div>
+        <div class="menu-card" onclick="openPage('settings')">
+            <div class="icon">⚙️</div>
+            Settings
+        </div>
 
-</div>
-
+    </div>
 </div>
 
 
 <!-- STUDENTS -->
-
 <div id="students" class="section">
 
-<div class="back" onclick="openPage('dashboard')">← Back</div>
+    <button class="back" onclick="openPage('dashboard')">⬅ Back</button>
 
-<div class="card">
+    <h2>👨‍🎓 Students</h2>
 
-<h2>👨‍🎓 Students</h2>
+    <div class="form-box">
 
-<label>Student Name</label>
-<input id="name" placeholder="Student Name">
+        <label>Student Name</label>
+        <input id="studentName" type="text" placeholder="Student name">
 
-<label>Father Name</label>
-<input id="father" placeholder="Father Name">
+        <label>Father Name</label>
+        <input id="fatherName" type="text" placeholder="Father name">
 
-<label>Class</label>
-<input id="className" placeholder="Example: 5">
+        <label>Class</label>
+        <input id="studentClass" type="text" placeholder="Example: 5">
 
-<label>Seat Number</label>
-<input id="seat" placeholder="Example: 1">
+        <label>Seat Number</label>
+        <input id="studentSeat" type="text" placeholder="Example: 1">
 
-<br>
+        <button class="primary" onclick="addStudent()">
+            ➕ Add Student
+        </button>
 
-<button class="primary" onclick="addStudent()">💾 Save Student</button>
+        <div id="studentMessage" class="message"></div>
 
-</div>
+    </div>
 
-<div class="card">
-
-<h2>Student List</h2>
-
-<div id="studentList"></div>
-
-</div>
+    <div id="studentList"></div>
 
 </div>
 
 
-<!-- SEATS -->
+<!-- SEAT ALLOTMENT -->
+<div id="seat" class="section">
 
-<div id="seats" class="section">
+    <button class="back" onclick="openPage('dashboard')">⬅ Back</button>
 
-<div class="back" onclick="openPage('dashboard')">← Back</div>
+    <h2>🪑 Seat Allotment</h2>
 
-<div class="card">
+    <div class="form-box">
 
-<h2>🪑 Seat Allotment</h2>
+        <label>Class</label>
+        <input id="seatClass" type="text" placeholder="Example: 5">
 
-<label>Class</label>
-<input id="seatClass" placeholder="Example: 5">
+        <label>Starting Seat Number</label>
+        <input id="startSeat" type="number" value="1">
 
-<label>Starting Seat Number</label>
-<input id="startSeat" type="number" value="1">
+        <button class="primary" onclick="allotSeats()">
+            🪑 Allot Seats
+        </button>
 
-<br>
+        <div id="seatMessage" class="message"></div>
 
-<button class="primary" onclick="assignSeats()">
-🪑 Allot Seats
-</button>
+    </div>
 
-</div>
-
-<div class="card">
-
-<h2>Seat List</h2>
-
-<div id="seatList"></div>
-
-</div>
+    <div id="seatList"></div>
 
 </div>
 
 
-<!-- SLIP -->
+<!-- SLIP CARD -->
+<div id="slipCard" class="section">
 
-<div id="slip" class="section">
+    <button class="back no-print" onclick="openPage('dashboard')">⬅ Back</button>
 
-<div class="back" onclick="openPage('dashboard')">← Back</div>
+    <h2>🎫 Slip Card</h2>
 
-<div class="card no-print">
+    <div class="form-box no-print">
 
-<h2>🎫 Slip Card</h2>
+        <label>Select Class</label>
 
-<p>
-A4 page par 4 small coloured slip cards print hongi.
-Slip card par marks nahi honge.
-</p>
+        <select id="slipClass">
+            <option value="">Select Class</option>
+        </select>
 
-<label>Class</label>
-<input id="slipClass" placeholder="Example: 5">
+        <button class="primary" onclick="makeSlips()">
+            🎫 Generate Slip Cards
+        </button>
 
-<br>
+        <button class="success" onclick="window.print()">
+            🖨 Print / Save PDF
+        </button>
 
-<button class="primary" onclick="makeSlips()">
-🎫 Generate Slip Cards
-</button>
+    </div>
 
-<button class="success" onclick="window.print()">
-🖨️ Print / Save PDF
-</button>
-
-</div>
-
-<div id="slips"></div>
+    <div id="slipArea" class="slip-area"></div>
 
 </div>
 
 
-<!-- TIMETABLE -->
-
+<!-- TIME TABLE -->
 <div id="timetable" class="section">
 
-<div class="back" onclick="openPage('dashboard')">← Back</div>
+    <button class="back" onclick="openPage('dashboard')">⬅ Back</button>
 
-<div class="card">
+    <h2>📅 Time Table</h2>
 
-<h2>📅 Editable Time Table</h2>
+    <div class="form-box">
 
-<label>Class</label>
-<input id="ttClass" placeholder="Example: 5">
+        <label>Class</label>
+        <input id="ttClass" type="text" placeholder="Example: 5">
 
-<label>Time Table Title</label>
-<input id="ttTitle" value="Time Table">
+        <button class="primary" onclick="loadTimetable()">
+            📂 Load Time Table
+        </button>
 
-<div class="table-wrap">
+    </div>
 
-<table>
-
-<thead>
-<tr>
-<th>Day</th>
-<th>Subject</th>
-<th>Date</th>
-<th>Time</th>
-</tr>
-</thead>
-
-<tbody id="ttRows"></tbody>
-
-</table>
-
-</div>
-
-<br>
-
-<button class="success" onclick="saveTT()">
-💾 Save Time Table
-</button>
-
-<button class="primary" onclick="loadTT()">
-🔄 Load Time Table
-</button>
-
-</div>
+    <div id="ttArea"></div>
 
 </div>
 
 
 <!-- RESULTS -->
-
 <div id="results" class="section">
 
-<div class="back" onclick="openPage('dashboard')">← Back</div>
+    <button class="back" onclick="openPage('dashboard')">⬅ Back</button>
 
-<div class="card">
+    <h2>📝 Results</h2>
 
-<h2>📝 Results</h2>
+    <div class="form-box">
 
-<p>
-Result Sheet section.
-</p>
+        <p>
+            Result section is ready. Student result management can be added here.
+        </p>
 
-</div>
+        <button class="primary" onclick="showResultMessage()">
+            ➕ Add Result
+        </button>
+
+        <div id="resultMessage" class="message">
+            Result entry section ready.
+        </div>
+
+    </div>
 
 </div>
 
 
 <!-- REPORTS -->
-
 <div id="reports" class="section">
 
-<div class="back" onclick="openPage('dashboard')">← Back</div>
+    <button class="back" onclick="openPage('dashboard')">⬅ Back</button>
 
-<div class="card">
+    <h2>📊 Reports</h2>
 
-<h2>📊 Reports</h2>
+    <div class="report-card">
+        <h3>👨‍🎓 Student Report</h3>
+        <p id="reportStudents">Total Students: 0</p>
+    </div>
 
-<p>
-School Reports
-</p>
-
-</div>
+    <div class="report-card">
+        <h3>🪑 Seat Report</h3>
+        <p>Seat numbers can be managed from Seat Allotment.</p>
+    </div>
 
 </div>
 
 
 <!-- SETTINGS -->
-
 <div id="settings" class="section">
 
-<div class="back" onclick="openPage('dashboard')">← Back</div>
+    <button class="back" onclick="openPage('dashboard')">⬅ Back</button>
 
-<div class="card">
+    <h2>⚙️ Settings</h2>
 
-<h2>⚙️ Settings</h2>
+    <div class="form-box">
 
-<p>School Management Settings</p>
+        <h3>School Information</h3>
 
-<button class="danger" onclick="deleteData()">
-🗑️ Delete All Students
-</button>
+        <label>School Name</label>
+        <input
+            id="schoolName"
+            value="Moon Star Public High School Khanwahan"
+        >
 
-</div>
+        <button class="primary" onclick="saveSettings()">
+            💾 Save Settings
+        </button>
+
+        <div id="settingsMessage" class="message"></div>
+
+    </div>
 
 </div>
 
@@ -605,394 +481,141 @@ School Reports
 
 <script>
 
-/* ==========================
-PAGE NAVIGATION
-========================== */
+/* =========================
+   BASIC PAGE NAVIGATION
+========================= */
 
 function openPage(page){
 
-var sections=document.querySelectorAll('.section');
+    var sections = document.querySelectorAll(".section");
 
-for(var i=0;i<sections.length;i++){
-sections[i].classList.remove('active');
+    for(var i=0;i<sections.length;i++){
+        sections[i].classList.remove("active");
+    }
+
+    var selected = document.getElementById(page);
+
+    if(selected){
+        selected.classList.add("active");
+    }
+
+    if(page === "students"){
+        showStudents();
+    }
+
+    if(page === "seat"){
+        showSeatStudents();
+    }
+
+    if(page === "slipCard"){
+        loadSlipClasses();
+    }
+
+    if(page === "reports"){
+        updateReports();
+    }
 }
 
-document.getElementById(page).classList.add('active');
 
-if(page==='students'){
-showStudents();
+/* =========================
+   STUDENTS
+========================= */
+
+function getStudents(){
+
+    var data = localStorage.getItem("moonStarStudents");
+
+    if(!data){
+        return [];
+    }
+
+    try{
+        return JSON.parse(data);
+    }catch(e){
+        return [];
+    }
 }
 
+
+function saveStudents(data){
+
+    localStorage.setItem(
+        "moonStarStudents",
+        JSON.stringify(data)
+    );
 }
 
-
-/* ==========================
-STUDENTS
-========================== */
-
-var students=JSON.parse(
-localStorage.getItem('moonStarStudents') || '[]'
-);
-
-function saveData(){
-
-localStorage.setItem(
-'moonStarStudents',
-JSON.stringify(students)
-);
-
-}
 
 function addStudent(){
 
-var name=document.getElementById('name').value.trim();
-var father=document.getElementById('father').value.trim();
-var cls=document.getElementById('className').value.trim();
-var seat=document.getElementById('seat').value.trim();
+    var name = document.getElementById("studentName").value.trim();
+    var father = document.getElementById("fatherName").value.trim();
+    var cls = document.getElementById("studentClass").value.trim();
+    var seat = document.getElementById("studentSeat").value.trim();
 
-if(name===''){
-alert('Student Name likhein.');
-return;
+    if(name === "" || father === "" || cls === ""){
+        alert("Please enter Student Name, Father Name and Class.");
+        return;
+    }
+
+    var students = getStudents();
+
+    students.push({
+        id: Date.now(),
+        name:name,
+        father:father,
+        className:cls,
+        seat:seat
+    });
+
+    saveStudents(students);
+
+    document.getElementById("studentName").value = "";
+    document.getElementById("fatherName").value = "";
+    document.getElementById("studentClass").value = "";
+    document.getElementById("studentSeat").value = "";
+
+    showMessage("studentMessage","Student added successfully.");
+
+    showStudents();
 }
 
-students.push({
-name:name,
-father:father,
-className:cls,
-seat:seat
-});
-
-saveData();
-
-document.getElementById('name').value='';
-document.getElementById('father').value='';
-document.getElementById('className').value='';
-document.getElementById('seat').value='';
-
-showStudents();
-
-alert('Student save ho gaya.');
-
-}
 
 function showStudents(){
 
-var box=document.getElementById('studentList');
-
-box.innerHTML='';
-
-if(students.length===0){
-
-box.innerHTML='<p>Abhi koi student add nahi hua.</p>';
-return;
-
-}
-
-for(var i=0;i<students.length;i++){
-
-var s=students[i];
-
-box.innerHTML+=
-'<div class="student">'+
-'<strong>'+safe(s.name)+'</strong><br>'+
-'Father: '+safe(s.father || '-')+'<br>'+
-'Class: '+safe(s.className || '-')+'<br>'+
-'Seat Number: '+safe(s.seat || '-')+
-'<br><button class="danger" onclick="removeStudent('+i+')">Delete</button>'+
-'<div class="clear"></div>'+
-'</div>';
-
-}
-
-}
-
-function removeStudent(i){
-
-if(confirm('Student delete karein?')){
-
-students.splice(i,1);
-saveData();
-showStudents();
-
-}
-
-}
-
-
-/* ==========================
-SEAT ALLOTMENT
-========================== */
-
-function assignSeats(){
-
-var cls=document.getElementById('seatClass').value.trim();
-
-var start=parseInt(
-document.getElementById('startSeat').value
-);
-
-if(cls===''){
-
-alert('Class likhein.');
-return;
-
-}
-
-if(isNaN(start)){
-start=1;
-}
-
-var count=0;
-
-for(var i=0;i<students.length;i++){
-
-if(String(students[i].className).trim()===cls){
-
-students[i].seat=start;
-start++;
-count++;
-
-}
-
-}
-
-saveData();
-
-showSeats(cls);
-
-if(count===0){
-
-alert('Is class ka student nahi mila.');
-
-}else{
-
-alert('Seat numbers allot ho gaye.');
-
-}
-
-}
-
-function showSeats(cls){
-
-var box=document.getElementById('seatList');
-
-box.innerHTML='';
-
-for(var i=0;i<students.length;i++){
-
-var s=students[i];
-
-if(String(s.className).trim()===cls){
-
-box.innerHTML+=
-'<div class="seat">'+
-'<div class="seatno">'+(s.seat || '-')+'</div>'+
-'<div><strong>'+safe(s.name)+'</strong><br>'+
-'Father: '+safe(s.father || '-')+
-'</div>'+
-'</div>';
-
-}
-
-}
-
-}
-
-
-/* ==========================
-TIME TABLE
-========================== */
-
-var subjects=[
-'English',
-'Math',
-'Sindhi',
-'Islamiat',
-'S. Studies',
-'G. Science',
-'Urdu'
-];
-
-function makeRows(){
-
-var box=document.getElementById('ttRows');
-
-box.innerHTML='';
-
-for(var i=0;i<7;i++){
-
-box.innerHTML+=
-'<tr>'+
-'<td><input class="tt-input day" value="'+(i+1)+'"></td>'+
-'<td><input class="tt-input subject" value="'+subjects[i]+'"></td>'+
-'<td><input class="tt-input date" type="date"></td>'+
-'<td><input class="tt-input time" placeholder="09:00 AM"></td>'+
-'</tr>';
-
-}
-
-}
-
-function saveTT(){
-
-var cls=document.getElementById('ttClass').value.trim();
-
-if(cls===''){
-
-alert('Class likhein.');
-return;
-
-}
-
-var rows=document.querySelectorAll('#ttRows tr');
-
-var data=[];
-
-for(var i=0;i<rows.length;i++){
-
-data.push({
-day:rows[i].querySelector('.day').value,
-subject:rows[i].querySelector('.subject').value,
-date:rows[i].querySelector('.date').value,
-time:rows[i].querySelector('.time').value
-});
-
-}
-
-var obj={
-title:document.getElementById('ttTitle').value,
-rows:data
-};
-
-localStorage.setItem(
-'moonStarTT_'+cls,
-JSON.stringify(obj)
-);
-
-alert('Time Table save ho gaya.');
-
-}
-
-function loadTT(){
-
-var cls=document.getElementById('ttClass').value.trim();
-
-if(cls===''){
-
-alert('Class likhein.');
-return;
-
-}
-
-var saved=localStorage.getItem(
-'moonStarTT_'+cls
-);
-
-if(!saved){
-
-alert('Is class ka Time Table nahi mila.');
-return;
-
-}
-
-var obj=JSON.parse(saved);
-
-document.getElementById('ttTitle').value=
-obj.title || 'Time Table';
-
-makeRows();
-
-var rows=document.querySelectorAll('#ttRows tr');
-
-for(var i=0;i<obj.rows.length;i++){
-
-rows[i].querySelector('.day').value=
-obj.rows[i].day || '';
-
-rows[i].querySelector('.subject').value=
-obj.rows[i].subject || '';
-
-rows[i].querySelector('.date').value=
-obj.rows[i].date || '';
-
-rows[i].querySelector('.time').value=
-obj.rows[i].time || '';
-
-}
-
-alert('Time Table load ho gaya.');
-
-}
-
-
-/* ==========================
-SLIP CARDS
-========================== */
-
-function makeSlips(){
-
-var cls=document.getElementById('slipClass').value.trim();
-
-if(cls===''){
-
-alert('Class likhein.');
-return;
-
-}
-
-var list=[];
-
-for(var i=0;i<students.length;i++){
-
-if(String(students[i].className).trim()===cls){
-
-list.push(students[i]);
-
-}
-
-}
-
-if(list.length===0){
-
-alert('Is class ka student nahi mila.');
-return;
-
-}
-
-var saved=localStorage.getItem(
-'moonStarTT_'+cls
-);
-
-var tt={
-title:'Time Table',
-rows:[]
-};
-
-if(saved){
-tt=JSON.parse(saved);
-}
-
-var box=document.getElementById('slips');
-
-box.innerHTML='';
-
-for(var i=0;i<list.length;i++){
-
-var s=list[i];
-
-var rows='';
-
-if(tt.rows.length===0){
-
-rows='<tr><td colspan="4">Time Table not added</td></tr>';
-
-}else{
-
-for(var j=0;j<tt.rows.length;j++){
-
-var r=tt.rows[j];
-
-rows+=
-'<tr>'+
-'<td>'+safe(r.day || '-')+'</td>'+
-'<td>'+
+    var students = getStudents();
+    var box = document.getElementById("studentList");
+
+    if(students.length === 0){
+
+        box.innerHTML =
+            "<p>No students added yet.</p>";
+
+        return;
+    }
+
+    var html =
+        "<table>" +
+        "<tr>" +
+        "<th>#</th>" +
+        "<th>Name</th>" +
+        "<th>Father Name</th>" +
+        "<th>Class</th>" +
+        "<th>Seat</th>" +
+        "<th>Action</th>" +
+        "</tr>";
+
+    for(var i=0;i<students.length;i++){
+
+        html +=
+            "<tr>" +
+            "<td>" + (i+1) + "</td>" +
+            "<td>" + safe(students[i].name) + "</td>" +
+            "<td>" + safe(students[i].father) + "</td>" +
+            "<td>" + safe(students[i].className) + "</td>" +
+            "<td>" + safe(students[i].seat || "-") + "</td>" +
+            "<td>" +
+            "<button class='danger small-btn' onclick='deleteStudent(" +
+            students[i].id +
+            ")'>Delete</button>" +
+            "</td>"
