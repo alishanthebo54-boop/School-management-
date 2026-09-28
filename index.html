@@ -3,10 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Moon Star Public High School Khanwahan</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
@@ -17,7 +20,7 @@ body{
 
 header{
     background:linear-gradient(135deg,#1d4ed8,#2563eb);
-    color:#fff;
+    color:white;
     padding:22px 15px;
     text-align:center;
 }
@@ -39,7 +42,7 @@ header p{
 
 .section{
     display:none;
-    background:#fff;
+    background:white;
     border-radius:15px;
     padding:20px;
     box-shadow:0 4px 12px rgba(0,0,0,.08);
@@ -56,7 +59,7 @@ header p{
 }
 
 .menu-card{
-    background:#fff;
+    background:white;
     border-radius:15px;
     padding:25px 10px;
     text-align:center;
@@ -90,23 +93,23 @@ button{
 
 .back{
     background:#64748b;
-    color:#fff;
+    color:white;
     margin-bottom:15px;
 }
 
 .primary{
     background:#2563eb;
-    color:#fff;
+    color:white;
 }
 
 .success{
     background:#16a34a;
-    color:#fff;
+    color:white;
 }
 
 .danger{
     background:#dc2626;
-    color:#fff;
+    color:white;
 }
 
 .form-box{
@@ -198,7 +201,7 @@ th{
     }
 
     body{
-        background:#fff;
+        background:white;
     }
 
     .section{
@@ -297,11 +300,8 @@ th{
         <label>Class</label>
         <input id="studentClass" type="text" placeholder="Example: 5">
 
-        <label>Seat Number</label>
-        <input id="studentSeat" type="text" placeholder="Example: 1">
-
         <button class="primary" onclick="addStudent()">
-            ➕ Add Student
+            ➕ Save Student
         </button>
 
         <div id="studentMessage" class="message"></div>
@@ -313,7 +313,7 @@ th{
 </div>
 
 
-<!-- SEAT -->
+<!-- SEAT ALLOTMENT -->
 <div id="seat" class="section">
 
     <button class="back" onclick="openPage('dashboard')">
@@ -443,17 +443,23 @@ th{
     <h2>📊 Reports</h2>
 
     <div class="report-card">
+
         <h3>👨‍🎓 Student Report</h3>
+
         <p id="reportStudents">
             Total Students: 0
         </p>
+
     </div>
 
     <div class="report-card">
+
         <h3>🪑 Seat Report</h3>
+
         <p>
-            Seat numbers can be managed from Seat Allotment.
+            Seat numbers are managed from Seat Allotment.
         </p>
+
     </div>
 
 </div>
@@ -493,7 +499,7 @@ th{
 <script>
 
 /* =========================
-   PAGE OPEN
+   OPEN PAGE
 ========================= */
 
 function openPage(page){
@@ -517,34 +523,25 @@ function openPage(page){
     }
 
     if(page === "students"){
-
         showStudents();
-
     }
 
     if(page === "seat"){
-
         showSeatStudents();
-
     }
 
     if(page === "slipCard"){
-
         loadSlipClasses();
-
     }
 
     if(page === "reports"){
-
         updateReports();
-
     }
-
 }
 
 
 /* =========================
-   STUDENT DATA
+   STUDENT STORAGE
 ========================= */
 
 function getStudents(){
@@ -553,21 +550,15 @@ function getStudents(){
         localStorage.getItem("moonStarStudents");
 
     if(!data){
-
         return [];
-
     }
 
     try{
-
         return JSON.parse(data);
-
-    }catch(error){
-
-        return [];
-
     }
-
+    catch(error){
+        return [];
+    }
 }
 
 
@@ -599,19 +590,18 @@ function addStudent(){
         document.getElementById("studentClass")
         .value.trim();
 
-    var seat =
-        document.getElementById("studentSeat")
-        .value.trim();
 
-
-    if(name === "" || father === "" || cls === ""){
+    if(
+        name === "" ||
+        father === "" ||
+        cls === ""
+    ){
 
         alert(
             "Please enter Student Name, Father Name and Class."
         );
 
         return;
-
     }
 
 
@@ -628,7 +618,7 @@ function addStudent(){
 
         className:cls,
 
-        seat:seat
+        seat:""
 
     });
 
@@ -642,16 +632,16 @@ function addStudent(){
 
     document.getElementById("studentClass").value = "";
 
-    document.getElementById("studentSeat").value = "";
-
 
     showMessage(
         "studentMessage",
-        "Student added successfully."
+        "Student saved successfully."
     );
 
 
     showStudents();
+
+    updateReports();
 
 }
 
@@ -662,10 +652,16 @@ function addStudent(){
 
 function showStudents(){
 
-    var students = getStudents();
-
     var box =
         document.getElementById("studentList");
+
+
+    if(!box){
+        return;
+    }
+
+
+    var students = getStudents();
 
 
     if(students.length === 0){
@@ -674,11 +670,11 @@ function showStudents(){
             "<p>No students added yet.</p>";
 
         return;
-
     }
 
 
     var html =
+
         "<table>" +
 
         "<tr>" +
@@ -738,7 +734,6 @@ function showStudents(){
 
     html += "</table>";
 
-
     box.innerHTML = html;
 
 }
@@ -751,9 +746,7 @@ function showStudents(){
 function deleteStudent(id){
 
     if(!confirm("Delete this student?")){
-
         return;
-
     }
 
 
@@ -803,7 +796,6 @@ function allotSeats(){
         alert("Please enter class.");
 
         return;
-
     }
 
 
@@ -812,12 +804,10 @@ function allotSeats(){
         alert("Please enter starting seat number.");
 
         return;
-
     }
 
 
     var students = getStudents();
-
 
     var found = 0;
 
@@ -826,7 +816,8 @@ function allotSeats(){
 
         if(
             String(students[i].className)
-            .toLowerCase() === cls.toLowerCase()
+            .toLowerCase() ===
+            cls.toLowerCase()
         ){
 
             students[i].seat =
@@ -846,7 +837,6 @@ function allotSeats(){
         );
 
         return;
-
     }
 
 
@@ -860,6 +850,8 @@ function allotSeats(){
 
 
     showSeatStudents();
+
+    showStudents();
 
 }
 
@@ -875,9 +867,7 @@ function showSeatStudents(){
 
 
     if(!box){
-
         return;
-
     }
 
 
@@ -890,11 +880,11 @@ function showSeatStudents(){
             "<p>No students available.</p>";
 
         return;
-
     }
 
 
     var html =
+
         "<table>" +
 
         "<tr>" +
@@ -928,7 +918,6 @@ function showSeatStudents(){
 
 
     html += "</table>";
-
 
     box.innerHTML = html;
 
@@ -980,9 +969,14 @@ function loadSlipClasses(){
         var option =
             document.createElement("option");
 
-        option.value = classes[j];
 
-        option.textContent = classes[j];
+        option.value =
+            classes[j];
+
+
+        option.textContent =
+            classes[j];
+
 
         select.appendChild(option);
 
@@ -992,13 +986,14 @@ function loadSlipClasses(){
 
 
 /* =========================
-   GENERATE SLIPS
+   GENERATE SLIP CARDS
 ========================= */
 
 function makeSlips(){
 
     var cls =
-        document.getElementById("slipClass").value;
+        document.getElementById("slipClass")
+        .value;
 
 
     var area =
@@ -1010,7 +1005,6 @@ function makeSlips(){
         alert("Please select class.");
 
         return;
-
     }
 
 
@@ -1031,7 +1025,6 @@ function makeSlips(){
             "<p>No students found.</p>";
 
         return;
-
     }
 
 
@@ -1084,7 +1077,11 @@ function makeSlips(){
             "</tr>";
 
 
-        for(var d = 0; d < timetable.length; d++){
+        for(
+            var d = 0;
+            d < timetable.length;
+            d++
+        ){
 
             if(
                 timetable[d].subject !== "" ||
@@ -1160,7 +1157,8 @@ function getTimetable(cls){
 
             return JSON.parse(saved);
 
-        }catch(error){}
+        }
+        catch(error){}
 
     }
 
@@ -1204,7 +1202,6 @@ function loadTimetable(){
         alert("Please enter class.");
 
         return;
-
     }
 
 
@@ -1313,7 +1310,6 @@ function saveTimetable(){
         alert("Please enter class.");
 
         return;
-
     }
 
 
@@ -1405,7 +1401,6 @@ function saveSettings(){
         alert("Please enter school name.");
 
         return;
-
     }
 
 
@@ -1449,7 +1444,7 @@ function loadSettings(){
 
 
 /* =========================
-   RESULT
+   RESULTS
 ========================= */
 
 function showResultMessage(){
@@ -1476,9 +1471,7 @@ function showMessage(id,text){
 
 
     if(!box){
-
         return;
-
     }
 
 
@@ -1497,7 +1490,7 @@ function showMessage(id,text){
 
 
 /* =========================
-   SECURITY / HTML TEXT
+   SECURITY
 ========================= */
 
 function safe(value){
@@ -1535,7 +1528,7 @@ function safeAttr(value){
 
 
 /* =========================
-   START APP
+   START
 ========================= */
 
 loadSettings();
