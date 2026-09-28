@@ -230,6 +230,55 @@ body{
     color:#64748b;
 }
 
+.seat-card{
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    padding:12px;
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.seat-number{
+    min-width:55px;
+    height:55px;
+    border-radius:10px;
+    background:#0f3d68;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.seat-info{
+    flex:1;
+}
+
+.seat-info h3{
+    margin:0 0 4px;
+    font-size:16px;
+}
+
+.seat-info p{
+    margin:2px 0;
+    font-size:13px;
+    color:#64748b;
+}
+
+.allot-message{
+    background:#ecfdf5;
+    border:1px solid #a7f3d0;
+    color:#065f46;
+    padding:12px;
+    border-radius:8px;
+    margin:15px 0;
+    display:none;
+}
+
 .footer{
     text-align:center;
     padding:25px 10px;
@@ -274,6 +323,12 @@ body{
             <div class="icon">👨‍🎓</div>
             <h3>Students</h3>
             <p>Student management</p>
+        </div>
+
+        <div class="card" onclick="openPage('seats')">
+            <div class="icon">💺</div>
+            <h3>Seat Allotment</h3>
+            <p>Class-wise seat allotment</p>
         </div>
 
         <div class="card" onclick="openPage('results')">
@@ -373,11 +428,7 @@ body{
 
             <div class="form-group">
                 <label>Phone Number</label>
-                <input
-                    type="tel"
-                    id="phone"
-                    placeholder="Enter phone number"
-                >
+                <input type="tel" id="phone" placeholder="Enter phone number">
             </div>
 
             <div class="form-group">
@@ -412,6 +463,57 @@ body{
 </div>
 
 
+<!-- SEAT ALLOTMENT -->
+<div id="seats" class="page">
+
+    <div class="back" onclick="openPage('dashboard')">
+        ← Back
+    </div>
+
+    <div class="section-box">
+
+        <h2>💺 Seat Allotment</h2>
+
+        <p>
+            Select a class. Students of that class will automatically
+            receive seats starting from Seat 1.
+        </p>
+
+        <div class="form-group">
+
+            <label>Select Class</label>
+
+            <select id="seatClass" onchange="showClassStudents()">
+
+                <option value="">Select Class</option>
+
+                <option>Play</option>
+                <option>Nursery</option>
+                <option>KG</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+
+            </select>
+
+        </div>
+
+        <div id="allotMessage" class="allot-message"></div>
+
+        <div id="seatList"></div>
+
+    </div>
+
+</div>
+
+
 <!-- RESULTS -->
 <div id="results" class="page">
 
@@ -428,6 +530,7 @@ body{
         </p>
 
     </div>
+
 </div>
 
 
@@ -447,6 +550,7 @@ body{
         </p>
 
     </div>
+
 </div>
 
 
@@ -473,6 +577,7 @@ body{
         </p>
 
     </div>
+
 </div>
 
 </div>
@@ -484,9 +589,11 @@ body{
 
 <script>
 
-let students = JSON.parse(localStorage.getItem("schoolStudents")) || [];
+let students =
+    JSON.parse(localStorage.getItem("schoolStudents")) || [];
 
 let editingId = null;
+
 let selectedPhoto = "";
 
 
@@ -504,24 +611,31 @@ function openPage(page){
         displayStudents();
     }
 
+    if(page === "seats"){
+        showClassStudents();
+    }
+
     window.scrollTo(0,0);
 }
 
 
-/* SHOW FORM */
+/* STUDENT FORM */
 
 function showStudentForm(){
 
-    document.getElementById("studentForm").style.display = "block";
+    document.getElementById("studentForm").style.display =
+        "block";
 
     document.getElementById("formTitle").innerText =
-        editingId ? "✏️ Edit Student" : "➕ Add New Student";
+        editingId
+        ? "✏️ Edit Student"
+        : "➕ Add New Student";
 
     window.scrollTo(0,0);
 }
 
 
-/* PHOTO PREVIEW */
+/* PHOTO */
 
 function previewPhoto(event){
 
@@ -541,7 +655,9 @@ function previewPhoto(event){
             document.getElementById("photoPreview");
 
         preview.src = selectedPhoto;
+
         preview.style.display = "block";
+
     };
 
     reader.readAsDataURL(file);
@@ -553,27 +669,35 @@ function previewPhoto(event){
 function saveStudent(){
 
     const name =
-        document.getElementById("studentName").value.trim();
+        document.getElementById("studentName")
+        .value.trim();
 
     const father =
-        document.getElementById("fatherName").value.trim();
+        document.getElementById("fatherName")
+        .value.trim();
 
     const studentClass =
-        document.getElementById("studentClass").value;
+        document.getElementById("studentClass")
+        .value;
 
     const dob =
-        document.getElementById("dob").value;
+        document.getElementById("dob")
+        .value;
 
     const gender =
-        document.getElementById("gender").value;
+        document.getElementById("gender")
+        .value;
 
     const phone =
-        document.getElementById("phone").value.trim();
+        document.getElementById("phone")
+        .value.trim();
 
 
     if(!name || !father || !studentClass){
 
-        alert("Please enter Student Name, Father Name and Class.");
+        alert(
+            "Please enter Student Name, Father Name and Class."
+        );
 
         return;
     }
@@ -581,9 +705,10 @@ function saveStudent(){
 
     if(editingId){
 
-        const index = students.findIndex(
-            s => s.id === editingId
-        );
+        const index =
+            students.findIndex(
+                s => s.id === editingId
+            );
 
         if(index !== -1){
 
@@ -602,9 +727,9 @@ function saveStudent(){
 
     }else{
 
-        const student = {
+        students.push({
 
-            id: Date.now(),
+            id:Date.now(),
 
             name:name,
 
@@ -620,9 +745,7 @@ function saveStudent(){
 
             photo:selectedPhoto
 
-        };
-
-        students.push(student);
+        });
 
     }
 
@@ -665,11 +788,21 @@ function displayStudents(){
 
             return (
 
-                student.name.toLowerCase().includes(search) ||
+                student.name
+                    .toLowerCase()
+                    .includes(search)
 
-                student.father.toLowerCase().includes(search) ||
+                ||
 
-                student.studentClass.toLowerCase().includes(search)
+                student.father
+                    .toLowerCase()
+                    .includes(search)
+
+                ||
+
+                student.studentClass
+                    .toLowerCase()
+                    .includes(search)
 
             );
 
@@ -693,33 +826,39 @@ function displayStudents(){
         const photo =
             student.photo
             ? student.photo
-            : "data:image/svg+xml;charset=UTF-8," +
-              encodeURIComponent(
-                `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
-                <rect width="100%" height="100%" fill="#dbeafe"/>
-                <text x="50%" y="55%" text-anchor="middle" font-size="35">👨‍🎓</text>
-                </svg>`
-              );
+            : "";
 
 
         const card =
             document.createElement("div");
 
-        card.className = "student-card";
+        card.className =
+            "student-card";
 
 
         card.innerHTML = `
 
             <div class="student-top">
 
-                <img
-                    src="${photo}"
-                    class="student-photo"
-                >
+                ${
+                    photo
+                    ? `<img src="${photo}" class="student-photo">`
+                    : `<div class="student-photo"
+                         style="
+                         display:flex;
+                         align-items:center;
+                         justify-content:center;
+                         background:#dbeafe;
+                         font-size:30px;">
+                         👨‍🎓
+                       </div>`
+                }
 
                 <div class="student-info">
 
-                    <h3>${escapeHTML(student.name)}</h3>
+                    <h3>
+                        ${escapeHTML(student.name)}
+                    </h3>
 
                     <p>
                         <b>Father:</b>
@@ -778,12 +917,14 @@ function displayStudents(){
 }
 
 
-/* EDIT STUDENT */
+/* EDIT */
 
 function editStudent(id){
 
     const student =
-        students.find(s => s.id === id);
+        students.find(
+            s => s.id === id
+        );
 
     if(!student){
         return;
@@ -820,9 +961,11 @@ function editStudent(id){
         const preview =
             document.getElementById("photoPreview");
 
-        preview.src = selectedPhoto;
+        preview.src =
+            selectedPhoto;
 
-        preview.style.display = "block";
+        preview.style.display =
+            "block";
 
     }
 
@@ -832,27 +975,25 @@ function editStudent(id){
 }
 
 
-/* DELETE STUDENT */
+/* DELETE */
 
 function deleteStudent(id){
 
     const student =
-        students.find(s => s.id === id);
+        students.find(
+            s => s.id === id
+        );
 
     if(!student){
         return;
     }
 
 
-    const confirmDelete =
-        confirm(
-            "Delete " +
-            student.name +
-            "?"
-        );
-
-
-    if(!confirmDelete){
+    if(!confirm(
+        "Delete " +
+        student.name +
+        "?"
+    )){
         return;
     }
 
@@ -874,7 +1015,7 @@ function deleteStudent(id){
 }
 
 
-/* CANCEL FORM */
+/* CANCEL */
 
 function cancelForm(){
 
@@ -883,7 +1024,7 @@ function cancelForm(){
 }
 
 
-/* RESET FORM */
+/* RESET */
 
 function resetForm(){
 
@@ -912,11 +1053,118 @@ function resetForm(){
 
     preview.src = "";
 
-    preview.style.display = "none";
+    preview.style.display =
+        "none";
 
 
     document.getElementById("studentForm").style.display =
         "none";
+
+}
+
+
+/* SEAT ALLOTMENT */
+
+function showClassStudents(){
+
+    const selectedClass =
+        document.getElementById("seatClass").value;
+
+    const list =
+        document.getElementById("seatList");
+
+    const message =
+        document.getElementById("allotMessage");
+
+
+    list.innerHTML = "";
+
+    message.style.display = "none";
+
+
+    if(!selectedClass){
+        return;
+    }
+
+
+    const classStudents =
+        students.filter(function(student){
+
+            return student.studentClass === selectedClass;
+
+        });
+
+
+    if(classStudents.length === 0){
+
+        message.innerText =
+            "No students found in Class " +
+            selectedClass +
+            ". Add students first.";
+
+        message.style.display =
+            "block";
+
+        return;
+    }
+
+
+    message.innerText =
+        "✅ " +
+        classStudents.length +
+        " students found in Class " +
+        selectedClass +
+        ". Seats allotted from 1 to " +
+        classStudents.length +
+        ".";
+
+    message.style.display =
+        "block";
+
+
+    classStudents.forEach(function(student,index){
+
+        const seatNumber =
+            index + 1;
+
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "seat-card";
+
+
+        card.innerHTML = `
+
+            <div class="seat-number">
+                ${seatNumber}
+            </div>
+
+            <div class="seat-info">
+
+                <h3>
+                    ${escapeHTML(student.name)}
+                </h3>
+
+                <p>
+                    Father:
+                    ${escapeHTML(student.father)}
+                </p>
+
+                <p>
+                    Class:
+                    ${escapeHTML(student.studentClass)}
+                </p>
+
+            </div>
+
+        `;
+
+
+        list.appendChild(card);
+
+    });
 
 }
 
@@ -926,16 +1174,21 @@ function resetForm(){
 function escapeHTML(text){
 
     return String(text)
+
         .replace(/&/g,"&amp;")
+
         .replace(/</g,"&lt;")
+
         .replace(/>/g,"&gt;")
+
         .replace(/"/g,"&quot;")
+
         .replace(/'/g,"&#039;");
 
 }
 
 
-/* INITIAL LOAD */
+/* START */
 
 displayStudents();
 
