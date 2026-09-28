@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>School Management System</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f1f5f9;
+    color:#1e293b;
+}
+
+.header{
+    background:linear-gradient(135deg,#0f3d68,#1677b7);
+    color:white;
+    padding:25px 18px;
+    text-align:center;
+}
+
+.header h1{
+    margin:0;
+    font-size:24px;
+}
+
+.header p{
+    margin:8px 0 0;
+    font-size:14px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+.welcome{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.welcome h2{
+    margin:0 0 8px;
+    font-size:20px;
+}
+
+.welcome p{
+    margin:0;
+    color:#64748b;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:22px 15px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    cursor:pointer;
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+}
+
+.icon{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.card h3{
+    margin:5px 0;
+    font-size:17px;
+}
+
+.card p{
+    margin:5px 0 0;
+    color:#64748b;
+    font-size:13px;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.back{
+    display:inline-block;
+    background:#0f3d68;
+    color:white;
+    padding:10px 16px;
+    border-radius:8px;
+    margin-bottom:15px;
+    cursor:pointer;
+}
+
+.section-box{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.section-box h2{
+    margin-top:0;
+}
+
+.footer{
+    text-align:center;
+    padding:25px 10px;
+    color:#64748b;
+    font-size:13px;
+}
+
+@media(max-width:600px){
+    .grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .header h1{
+        font-size:20px;
+    }
+}
+
+@media(max-width:380px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <h1>🏫 Moon Star Public High School Khanwahan</h1>
+    <p>School Management System</p>
+</div>
+
+<div class="container">
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="page active">
+
+        <div class="welcome">
+            <h2>Welcome to School Management</h2>
+            <p>Manage your school information from one place.</p>
+        </div>
+
+        <div class="grid">
+
+            <div class="card" onclick="openPage('students')">
+                <div class="icon">👨‍🎓</div>
+                <h3>Students</h3>
+                <p>Student management</p>
+            </div>
+
+            <div class="card" onclick="openPage('results')">
+                <div class="icon">📝</div>
+                <h3>Results</h3>
+                <p>Examination & results</p>
+            </div>
+
+            <div class="card" onclick="openPage('reports')">
+                <div class="icon">📊</div>
+                <h3>Reports</h3>
+                <p>School reports</p>
+            </div>
+
+            <div class="card" onclick="openPage('settings')">
+                <div class="icon">⚙️</div>
+                <h3>Settings</h3>
+                <p>System settings</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- STUDENTS -->
+    <div id="students" class="page">
