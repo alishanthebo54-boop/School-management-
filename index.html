@@ -15,203 +15,156 @@ body{
     margin:0;
     font-family:Arial,sans-serif;
     background:#f1f5f9;
-    color:#1e293b;
+    color:#222;
 }
 
-.header{
-    background:linear-gradient(135deg,#0f3d68,#1677b7);
+header{
+    background:linear-gradient(135deg,#075985,#0284c7);
     color:white;
-    padding:25px 15px;
     text-align:center;
+    padding:22px 15px;
 }
 
-.header h1{
+header h1{
     margin:0;
-    font-size:23px;
+    font-size:22px;
 }
 
-.header p{
-    margin:8px 0 0;
-    font-size:14px;
+header p{
+    margin:7px 0 0;
+    font-size:15px;
 }
 
 .container{
-    max-width:1000px;
+    max-width:900px;
     margin:auto;
-    padding:20px;
+    padding:18px;
 }
 
-.welcome{
-    background:white;
-    padding:20px;
-    border-radius:15px;
-    margin-bottom:20px;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
-}
-
-.welcome h2{
-    margin:0 0 8px;
-    font-size:20px;
-}
-
-.welcome p{
-    margin:0;
-    color:#64748b;
-}
-
-.grid{
+.dashboard{
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:15px;
 }
 
-.card{
+.menu-card{
     background:white;
-    border-radius:15px;
-    padding:22px 15px;
+    border-radius:14px;
+    padding:25px 15px;
     text-align:center;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
     cursor:pointer;
-    transition:.2s;
+    font-size:18px;
+    font-weight:bold;
 }
 
-.card:hover{
-    transform:translateY(-3px);
+.menu-card:hover{
+    transform:translateY(-2px);
 }
 
-.icon{
-    font-size:38px;
-    margin-bottom:10px;
-}
-
-.card h3{
-    margin:5px 0;
-    font-size:17px;
-}
-
-.card p{
-    margin:5px 0 0;
-    color:#64748b;
-    font-size:13px;
-}
-
-.page{
+.section{
     display:none;
 }
 
-.page.active{
+.section.active{
     display:block;
 }
 
 .back{
     display:inline-block;
-    background:#0f3d68;
+    margin-bottom:15px;
+    background:#334155;
     color:white;
     padding:10px 16px;
     border-radius:8px;
-    margin-bottom:15px;
     cursor:pointer;
 }
 
-.section-box{
+.card{
     background:white;
-    padding:20px;
-    border-radius:15px;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    padding:18px;
+    border-radius:14px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    margin-bottom:18px;
 }
 
-.section-box h2{
+h2{
     margin-top:0;
+    color:#075985;
 }
 
-.form-group{
-    margin-bottom:14px;
-}
-
-.form-group label{
+label{
     display:block;
-    font-weight:bold;
+    margin-top:12px;
     margin-bottom:6px;
-    font-size:14px;
+    font-weight:bold;
 }
 
-.form-group input,
-.form-group select{
+input,select{
     width:100%;
     padding:12px;
     border:1px solid #cbd5e1;
     border-radius:8px;
-    font-size:15px;
+    font-size:16px;
+    background:white;
 }
 
-.photo-preview{
-    width:100px;
-    height:100px;
-    border-radius:50%;
-    object-fit:cover;
-    border:3px solid #dbeafe;
-    display:none;
-    margin:10px auto;
-}
-
-.btn{
+button{
     border:0;
     border-radius:8px;
     padding:11px 16px;
+    font-size:15px;
     cursor:pointer;
-    font-size:14px;
-    margin:3px;
 }
 
-.btn-primary{
-    background:#0f3d68;
+.primary{
+    background:#0284c7;
     color:white;
 }
 
-.btn-edit{
-    background:#f59e0b;
+.success{
+    background:#16a34a;
     color:white;
 }
 
-.btn-delete{
+.danger{
     background:#dc2626;
     color:white;
 }
 
-.btn-secondary{
-    background:#64748b;
+.secondary{
+    background:#475569;
     color:white;
 }
 
 .search{
-    width:100%;
-    padding:12px;
-    border:1px solid #cbd5e1;
-    border-radius:8px;
-    margin:15px 0;
-    font-size:15px;
+    margin-bottom:15px;
 }
 
 .student-card{
     background:#f8fafc;
     border:1px solid #e2e8f0;
     border-radius:12px;
-    padding:15px;
+    padding:14px;
     margin-bottom:12px;
 }
 
 .student-top{
     display:flex;
+    gap:14px;
     align-items:center;
-    gap:15px;
 }
 
 .student-photo{
-    width:70px;
-    height:70px;
-    border-radius:50%;
+    width:65px;
+    height:65px;
+    border-radius:10px;
     object-fit:cover;
-    border:2px solid #dbeafe;
+    border:1px solid #cbd5e1;
+}
+
+.student-info{
+    flex:1;
 }
 
 .student-info h3{
@@ -221,32 +174,45 @@ body{
 .student-info p{
     margin:3px 0;
     font-size:14px;
-    color:#475569;
 }
 
-.empty{
-    text-align:center;
-    padding:25px;
-    color:#64748b;
+.actions{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    margin-top:10px;
+}
+
+.preview{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+    border-radius:10px;
+    margin-top:8px;
+    display:none;
+}
+
+.seat-result{
+    margin-top:18px;
 }
 
 .seat-card{
-    background:#f8fafc;
-    border:1px solid #e2e8f0;
+    background:white;
+    border:1px solid #dbeafe;
     border-radius:12px;
-    padding:12px;
+    padding:14px;
     margin-bottom:10px;
     display:flex;
     align-items:center;
-    gap:15px;
+    gap:14px;
 }
 
 .seat-number{
-    min-width:55px;
+    min-width:75px;
     height:55px;
-    border-radius:10px;
-    background:#0f3d68;
+    background:#075985;
     color:white;
+    border-radius:10px;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -259,27 +225,29 @@ body{
 }
 
 .seat-info h3{
-    margin:0 0 4px;
-    font-size:16px;
+    margin:0 0 5px;
 }
 
 .seat-info p{
-    margin:2px 0;
-    font-size:13px;
+    margin:3px 0;
+    color:#475569;
+}
+
+.message{
+    padding:12px;
+    border-radius:8px;
+    background:#ecfdf5;
+    color:#166534;
+    margin-top:12px;
+}
+
+.empty{
+    text-align:center;
+    padding:25px;
     color:#64748b;
 }
 
-.allot-message{
-    background:#ecfdf5;
-    border:1px solid #a7f3d0;
-    color:#065f46;
-    padding:12px;
-    border-radius:8px;
-    margin:15px 0;
-    display:none;
-}
-
-.footer{
+footer{
     text-align:center;
     padding:25px 10px;
     color:#64748b;
@@ -287,14 +255,21 @@ body{
 }
 
 @media(max-width:600px){
-    .grid{
+    .dashboard{
         grid-template-columns:1fr 1fr;
     }
-}
 
-@media(max-width:380px){
-    .grid{
-        grid-template-columns:1fr;
+    .menu-card{
+        padding:22px 8px;
+        font-size:16px;
+    }
+
+    .student-top{
+        align-items:flex-start;
+    }
+
+    .seat-card{
+        padding:10px;
     }
 }
 </style>
@@ -302,362 +277,309 @@ body{
 
 <body>
 
-<div class="header">
+<header>
     <h1>🏫 Moon Star Public High School Khanwahan</h1>
     <p>School Management System</p>
-</div>
+</header>
 
 <div class="container">
 
-<!-- DASHBOARD -->
-<div id="dashboard" class="page active">
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="section active">
 
-    <div class="welcome">
-        <h2>Welcome to School Management</h2>
-        <p>Manage your school information from one place.</p>
-    </div>
+        <div class="dashboard">
 
-    <div class="grid">
+            <div class="menu-card" onclick="openSection('students')">
+                👨‍🎓<br>Students
+            </div>
 
-        <div class="card" onclick="openPage('students')">
-            <div class="icon">👨‍🎓</div>
-            <h3>Students</h3>
-            <p>Student management</p>
-        </div>
+            <div class="menu-card" onclick="openSection('seats')">
+                💺<br>Seat Allotment
+            </div>
 
-        <div class="card" onclick="openPage('seats')">
-            <div class="icon">💺</div>
-            <h3>Seat Allotment</h3>
-            <p>Class-wise seat allotment</p>
-        </div>
+            <div class="menu-card" onclick="openSection('results')">
+                📝<br>Results
+            </div>
 
-        <div class="card" onclick="openPage('results')">
-            <div class="icon">📝</div>
-            <h3>Results</h3>
-            <p>Examination & results</p>
-        </div>
+            <div class="menu-card" onclick="openSection('reports')">
+                📊<br>Reports
+            </div>
 
-        <div class="card" onclick="openPage('reports')">
-            <div class="icon">📊</div>
-            <h3>Reports</h3>
-            <p>School reports</p>
-        </div>
+            <div class="menu-card" onclick="openSection('settings')">
+                ⚙️<br>Settings
+            </div>
 
-        <div class="card" onclick="openPage('settings')">
-            <div class="icon">⚙️</div>
-            <h3>Settings</h3>
-            <p>System settings</p>
         </div>
 
     </div>
-</div>
 
 
-<!-- STUDENTS -->
-<div id="students" class="page">
+    <!-- STUDENTS -->
+    <div id="students" class="section">
 
-    <div class="back" onclick="openPage('dashboard')">
-        ← Back
-    </div>
+        <div class="back" onclick="openSection('dashboard')">
+            ← Back
+        </div>
 
-    <div class="section-box">
+        <div class="card">
 
-        <h2>👨‍🎓 Students</h2>
+            <h2>👨‍🎓 Students</h2>
 
-        <button class="btn btn-primary" onclick="showStudentForm()">
-            ➕ Add Student
-        </button>
+            <button class="primary" onclick="showStudentForm()">
+                ➕ Add Student
+            </button>
 
-        <input
-            type="text"
-            id="searchStudent"
-            class="search"
-            placeholder="🔍 Search student..."
-            oninput="displayStudents()"
-        >
+            <br><br>
 
-        <div id="studentForm" style="display:none;">
+            <input
+                class="search"
+                id="studentSearch"
+                type="text"
+                placeholder="🔍 Search student..."
+                oninput="displayStudents()"
+            >
 
-            <hr>
+        </div>
 
-            <h3 id="formTitle">➕ Add New Student</h3>
 
-            <div class="form-group">
-                <label>Student Name</label>
-                <input type="text" id="studentName" placeholder="Enter student name">
-            </div>
+        <div id="studentForm" class="card" style="display:none;">
 
-            <div class="form-group">
-                <label>Father Name</label>
-                <input type="text" id="fatherName" placeholder="Enter father name">
-            </div>
+            <h2 id="formTitle">➕ Add New Student</h2>
 
-            <div class="form-group">
-                <label>Class</label>
-                <select id="studentClass">
-                    <option value="">Select Class</option>
-                    <option>Play</option>
-                    <option>Nursery</option>
-                    <option>KG</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                </select>
-            </div>
+            <input type="hidden" id="editId">
 
-            <div class="form-group">
-                <label>Date of Birth</label>
-                <input type="date" id="dob">
-            </div>
+            <label>Student Name</label>
+            <input id="studentName" type="text" placeholder="Enter student name">
 
-            <div class="form-group">
-                <label>Gender</label>
-                <select id="gender">
-                    <option value="">Select Gender</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                </select>
-            </div>
+            <label>Father Name</label>
+            <input id="fatherName" type="text" placeholder="Enter father name">
 
-            <div class="form-group">
-                <label>Phone Number</label>
-                <input type="tel" id="phone" placeholder="Enter phone number">
-            </div>
+            <label>Class</label>
+            <input id="studentClass" type="text" placeholder="Enter class">
 
-            <div class="form-group">
-                <label>Student Photo</label>
-                <input
-                    type="file"
-                    id="photo"
-                    accept="image/*"
-                    onchange="previewPhoto(event)"
-                >
+            <label>Date of Birth</label>
+            <input id="dob" type="date">
 
-                <img id="photoPreview" class="photo-preview">
-            </div>
+            <label>Gender</label>
+            <select id="gender">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
 
-            <button class="btn btn-primary" onclick="saveStudent()">
+            <label>Phone Number</label>
+            <input id="phone" type="tel" placeholder="Enter phone number">
+
+            <label>Student Photo</label>
+            <input id="studentPhoto" type="file" accept="image/*" onchange="previewPhoto(event)">
+
+            <img id="photoPreview" class="preview">
+
+            <br><br>
+
+            <button class="success" onclick="saveStudent()">
                 💾 Save Student
             </button>
 
-            <button class="btn btn-secondary" onclick="cancelForm()">
+            <button class="secondary" onclick="hideStudentForm()">
                 Cancel
             </button>
 
         </div>
 
-        <hr>
 
-        <h3>📋 Student List</h3>
+        <div class="card">
 
-        <div id="studentList"></div>
+            <h2>📋 Student List</h2>
 
-    </div>
-</div>
-
-
-<!-- SEAT ALLOTMENT -->
-<div id="seats" class="page">
-
-    <div class="back" onclick="openPage('dashboard')">
-        ← Back
-    </div>
-
-    <div class="section-box">
-
-        <h2>💺 Seat Allotment</h2>
-
-        <p>
-            Select a class. Students of that class will automatically
-            receive seats starting from Seat 1.
-        </p>
-
-        <div class="form-group">
-
-            <label>Select Class</label>
-
-            <select id="seatClass" onchange="showClassStudents()">
-
-                <option value="">Select Class</option>
-
-                <option>Play</option>
-                <option>Nursery</option>
-                <option>KG</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-
-            </select>
+            <div id="studentList"></div>
 
         </div>
 
-        <div id="allotMessage" class="allot-message"></div>
+    </div>
 
-        <div id="seatList"></div>
+
+    <!-- SEAT ALLOTMENT -->
+    <div id="seats" class="section">
+
+        <div class="back" onclick="openSection('dashboard')">
+            ← Back
+        </div>
+
+        <div class="card">
+
+            <h2>💺 Seat Allotment</h2>
+
+            <label>Class</label>
+            <input
+                id="allotClass"
+                type="text"
+                placeholder="Enter class, e.g. 5"
+            >
+
+            <label>Seat From</label>
+            <input
+                id="seatFrom"
+                type="number"
+                placeholder="Enter starting seat number, e.g. 2001"
+            >
+
+            <br><br>
+
+            <button class="primary" onclick="allotSeats()">
+                💺 Allot Seats
+            </button>
+
+            <div id="allotMessage"></div>
+
+        </div>
+
+
+        <div class="card seat-result">
+
+            <h2>📋 Allotted Seats</h2>
+
+            <div id="seatList">
+                <div class="empty">
+                    Class aur starting seat number likh kar
+                    <b>Allot Seats</b> dabayen.
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESULTS -->
+    <div id="results" class="section">
+
+        <div class="back" onclick="openSection('dashboard')">
+            ← Back
+        </div>
+
+        <div class="card">
+            <h2>📝 Results</h2>
+            <div class="empty">
+                Results section ready hai.
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- REPORTS -->
+    <div id="reports" class="section">
+
+        <div class="back" onclick="openSection('dashboard')">
+            ← Back
+        </div>
+
+        <div class="card">
+            <h2>📊 Reports</h2>
+            <div class="empty">
+                Reports section ready hai.
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- SETTINGS -->
+    <div id="settings" class="section">
+
+        <div class="back" onclick="openSection('dashboard')">
+            ← Back
+        </div>
+
+        <div class="card">
+            <h2>⚙️ Settings</h2>
+            <div class="empty">
+                Settings section ready hai.
+            </div>
+        </div>
 
     </div>
 
 </div>
 
-
-<!-- RESULTS -->
-<div id="results" class="page">
-
-    <div class="back" onclick="openPage('dashboard')">
-        ← Back
-    </div>
-
-    <div class="section-box">
-
-        <h2>📝 Results / Examination</h2>
-
-        <p>
-            Result management will be added here later.
-        </p>
-
-    </div>
-
-</div>
-
-
-<!-- REPORTS -->
-<div id="reports" class="page">
-
-    <div class="back" onclick="openPage('dashboard')">
-        ← Back
-    </div>
-
-    <div class="section-box">
-
-        <h2>📊 Reports</h2>
-
-        <p>
-            School reports will be added here later.
-        </p>
-
-    </div>
-
-</div>
-
-
-<!-- SETTINGS -->
-<div id="settings" class="page">
-
-    <div class="back" onclick="openPage('dashboard')">
-        ← Back
-    </div>
-
-    <div class="section-box">
-
-        <h2>⚙️ Settings</h2>
-
-        <p>
-            <b>School Name:</b><br>
-            Moon Star Public High School Khanwahan
-        </p>
-
-        <hr>
-
-        <p>
-            System settings will be added here later.
-        </p>
-
-    </div>
-
-</div>
-
-</div>
-
-<div class="footer">
+<footer>
     © 2026 Moon Star Public High School Khanwahan
-</div>
+</footer>
 
 
 <script>
 
-let students =
-    JSON.parse(localStorage.getItem("schoolStudents")) || [];
+let students = JSON.parse(localStorage.getItem("schoolStudents")) || [];
 
-let editingId = null;
-
-let selectedPhoto = "";
+let editingPhoto = "";
 
 
-/* PAGE NAVIGATION */
+/* SECTION OPEN */
+function openSection(sectionId){
 
-function openPage(page){
-
-    document.querySelectorAll(".page").forEach(function(item){
-        item.classList.remove("active");
+    document.querySelectorAll(".section").forEach(function(section){
+        section.classList.remove("active");
     });
 
-    document.getElementById(page).classList.add("active");
+    document.getElementById(sectionId).classList.add("active");
 
-    if(page === "students"){
+    if(sectionId === "students"){
         displayStudents();
     }
-
-    if(page === "seats"){
-        showClassStudents();
-    }
-
-    window.scrollTo(0,0);
 }
 
 
 /* STUDENT FORM */
-
 function showStudentForm(){
 
-    document.getElementById("studentForm").style.display =
-        "block";
+    document.getElementById("studentForm").style.display = "block";
 
-    document.getElementById("formTitle").innerText =
-        editingId
-        ? "✏️ Edit Student"
-        : "➕ Add New Student";
+    document.getElementById("formTitle").innerText = "➕ Add New Student";
 
-    window.scrollTo(0,0);
+    document.getElementById("editId").value = "";
+
+    document.getElementById("studentName").value = "";
+    document.getElementById("fatherName").value = "";
+    document.getElementById("studentClass").value = "";
+    document.getElementById("dob").value = "";
+    document.getElementById("gender").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("studentPhoto").value = "";
+
+    editingPhoto = "";
+
+    document.getElementById("photoPreview").style.display = "none";
 }
 
 
-/* PHOTO */
+function hideStudentForm(){
 
+    document.getElementById("studentForm").style.display = "none";
+
+    document.getElementById("editId").value = "";
+
+    editingPhoto = "";
+}
+
+
+/* PHOTO PREVIEW */
 function previewPhoto(event){
 
     const file = event.target.files[0];
 
-    if(!file){
-        return;
-    }
+    if(!file) return;
 
     const reader = new FileReader();
 
     reader.onload = function(e){
 
-        selectedPhoto = e.target.result;
+        editingPhoto = e.target.result;
 
-        const preview =
-            document.getElementById("photoPreview");
+        const preview = document.getElementById("photoPreview");
 
-        preview.src = selectedPhoto;
-
+        preview.src = e.target.result;
         preview.style.display = "block";
-
     };
 
     reader.readAsDataURL(file);
@@ -665,50 +587,34 @@ function previewPhoto(event){
 
 
 /* SAVE STUDENT */
-
 function saveStudent(){
 
-    const name =
-        document.getElementById("studentName")
-        .value.trim();
+    const name = document.getElementById("studentName").value.trim();
+    const father = document.getElementById("fatherName").value.trim();
+    const studentClass = document.getElementById("studentClass").value.trim();
+    const dob = document.getElementById("dob").value;
+    const gender = document.getElementById("gender").value;
+    const phone = document.getElementById("phone").value.trim();
+    const editId = document.getElementById("editId").value;
 
-    const father =
-        document.getElementById("fatherName")
-        .value.trim();
+    if(!name){
 
-    const studentClass =
-        document.getElementById("studentClass")
-        .value;
+        alert("Student Name likhen.");
+        return;
+    }
 
-    const dob =
-        document.getElementById("dob")
-        .value;
+    if(!studentClass){
 
-    const gender =
-        document.getElementById("gender")
-        .value;
-
-    const phone =
-        document.getElementById("phone")
-        .value.trim();
-
-
-    if(!name || !father || !studentClass){
-
-        alert(
-            "Please enter Student Name, Father Name and Class."
-        );
-
+        alert("Class likhen.");
         return;
     }
 
 
-    if(editingId){
+    if(editId){
 
-        const index =
-            students.findIndex(
-                s => s.id === editingId
-            );
+        const index = students.findIndex(
+            student => String(student.id) === String(editId)
+        );
 
         if(index !== -1){
 
@@ -719,34 +625,35 @@ function saveStudent(){
             students[index].gender = gender;
             students[index].phone = phone;
 
-            if(selectedPhoto){
-                students[index].photo = selectedPhoto;
+            if(editingPhoto){
+                students[index].photo = editingPhoto;
             }
 
         }
 
     }else{
 
-        students.push({
+        const newStudent = {
 
-            id:Date.now(),
+            id: Date.now(),
 
-            name:name,
+            name: name,
 
-            father:father,
+            father: father,
 
-            studentClass:studentClass,
+            studentClass: studentClass,
 
-            dob:dob,
+            dob: dob,
 
-            gender:gender,
+            gender: gender,
 
-            phone:phone,
+            phone: phone,
 
-            photo:selectedPhoto
+            photo: editingPhoto
 
-        });
+        };
 
+        students.push(newStudent);
     }
 
 
@@ -755,64 +662,52 @@ function saveStudent(){
         JSON.stringify(students)
     );
 
+    alert("✅ Student save ho gaya.");
 
-    alert(
-        editingId
-        ? "Student updated successfully."
-        : "Student added successfully."
-    );
-
-
-    resetForm();
+    hideStudentForm();
 
     displayStudents();
-
 }
 
 
 /* DISPLAY STUDENTS */
-
 function displayStudents(){
 
-    const list =
-        document.getElementById("studentList");
+    const list = document.getElementById("studentList");
 
-    const search =
-        document.getElementById("searchStudent")
+    if(!list) return;
+
+    const search = document
+        .getElementById("studentSearch")
         .value
-        .toLowerCase();
+        .toLowerCase()
+        .trim();
 
 
-    const filtered =
-        students.filter(function(student){
+    const filtered = students.filter(function(student){
 
-            return (
+        return (
 
-                student.name
-                    .toLowerCase()
-                    .includes(search)
+            student.name.toLowerCase().includes(search) ||
 
-                ||
+            student.father.toLowerCase().includes(search) ||
 
-                student.father
-                    .toLowerCase()
-                    .includes(search)
+            String(student.studentClass)
+                .toLowerCase()
+                .includes(search)
 
-                ||
+        );
 
-                student.studentClass
-                    .toLowerCase()
-                    .includes(search)
-
-            );
-
-        });
+    });
 
 
     if(filtered.length === 0){
 
-        list.innerHTML =
-            '<div class="empty">No students found.</div>';
+        list.innerHTML = `
+            <div class="empty">
+                No students found.
+            </div>
+        `;
 
         return;
     }
@@ -823,85 +718,60 @@ function displayStudents(){
 
     filtered.forEach(function(student){
 
-        const photo =
-            student.photo
-            ? student.photo
-            : "";
+        const div = document.createElement("div");
+
+        div.className = "student-card";
 
 
-        const card =
-            document.createElement("div");
+        const photo = student.photo
+            ? `<img class="student-photo" src="${student.photo}">`
+            : `<div class="student-photo"
+                style="display:flex;align-items:center;justify-content:center;background:#e2e8f0;">
+                👨‍🎓
+              </div>`;
 
-        card.className =
-            "student-card";
 
-
-        card.innerHTML = `
+        div.innerHTML = `
 
             <div class="student-top">
 
-                ${
-                    photo
-                    ? `<img src="${photo}" class="student-photo">`
-                    : `<div class="student-photo"
-                         style="
-                         display:flex;
-                         align-items:center;
-                         justify-content:center;
-                         background:#dbeafe;
-                         font-size:30px;">
-                         👨‍🎓
-                       </div>`
-                }
+                ${photo}
 
                 <div class="student-info">
 
-                    <h3>
-                        ${escapeHTML(student.name)}
-                    </h3>
+                    <h3>${escapeHtml(student.name)}</h3>
 
                     <p>
                         <b>Father:</b>
-                        ${escapeHTML(student.father)}
+                        ${escapeHtml(student.father || "-")}
                     </p>
 
                     <p>
                         <b>Class:</b>
-                        ${escapeHTML(student.studentClass)}
+                        ${escapeHtml(student.studentClass)}
                     </p>
 
                     <p>
                         <b>Gender:</b>
-                        ${escapeHTML(student.gender || "-")}
-                    </p>
-
-                    <p>
-                        <b>Phone:</b>
-                        ${escapeHTML(student.phone || "-")}
-                    </p>
-
-                    <p>
-                        <b>DOB:</b>
-                        ${escapeHTML(student.dob || "-")}
+                        ${escapeHtml(student.gender || "-")}
                     </p>
 
                 </div>
 
             </div>
 
-            <div style="margin-top:12px;">
+
+            <div class="actions">
 
                 <button
-                    class="btn btn-edit"
-                    onclick="editStudent(${student.id})"
-                >
+                    class="primary"
+                    onclick="editStudent(${student.id})">
                     ✏️ Edit
                 </button>
 
                 <button
-                    class="btn btn-delete"
-                    onclick="deleteStudent(${student.id})"
-                >
+                    class="danger"
+                    onclick="deleteStudent(${student.id})">
                     🗑️ Delete
                 </button>
 
@@ -910,98 +780,97 @@ function displayStudents(){
         `;
 
 
-        list.appendChild(card);
+        list.appendChild(div);
 
     });
 
 }
 
 
-/* EDIT */
-
+/* EDIT STUDENT */
 function editStudent(id){
 
-    const student =
-        students.find(
-            s => s.id === id
-        );
+    const student = students.find(
+        item => item.id === id
+    );
 
-    if(!student){
-        return;
-    }
+    if(!student) return;
 
 
-    editingId = id;
+    document.getElementById("studentForm").style.display = "block";
+
+    document.getElementById("formTitle").innerText =
+        "✏️ Edit Student";
+
+    document.getElementById("editId").value =
+        student.id;
 
     document.getElementById("studentName").value =
-        student.name;
+        student.name || "";
 
     document.getElementById("fatherName").value =
-        student.father;
+        student.father || "";
 
     document.getElementById("studentClass").value =
-        student.studentClass;
+        student.studentClass || "";
 
     document.getElementById("dob").value =
-        student.dob;
+        student.dob || "";
 
     document.getElementById("gender").value =
-        student.gender;
+        student.gender || "";
 
     document.getElementById("phone").value =
-        student.phone;
+        student.phone || "";
+
+    editingPhoto = student.photo || "";
 
 
-    selectedPhoto =
-        student.photo || "";
+    const preview =
+        document.getElementById("photoPreview");
 
 
-    if(selectedPhoto){
+    if(student.photo){
 
-        const preview =
-            document.getElementById("photoPreview");
+        preview.src = student.photo;
 
-        preview.src =
-            selectedPhoto;
+        preview.style.display = "block";
 
-        preview.style.display =
-            "block";
+    }else{
+
+        preview.style.display = "none";
 
     }
 
 
-    showStudentForm();
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 
 }
 
 
-/* DELETE */
-
+/* DELETE STUDENT */
 function deleteStudent(id){
 
-    const student =
-        students.find(
-            s => s.id === id
-        );
+    const student = students.find(
+        item => item.id === id
+    );
 
-    if(!student){
-        return;
-    }
+    if(!student) return;
 
 
     if(!confirm(
-        "Delete " +
-        student.name +
-        "?"
+        "Kya aap " + student.name + " ko delete karna chahte hain?"
     )){
         return;
     }
 
 
-    students =
-        students.filter(
-            s => s.id !== id
-        );
+    students = students.filter(
+        item => item.id !== id
+    );
 
 
     localStorage.setItem(
@@ -1015,74 +884,68 @@ function deleteStudent(id){
 }
 
 
-/* CANCEL */
-
-function cancelForm(){
-
-    resetForm();
-
-}
-
-
-/* RESET */
-
-function resetForm(){
-
-    editingId = null;
-
-    selectedPhoto = "";
-
-
-    document.getElementById("studentName").value = "";
-
-    document.getElementById("fatherName").value = "";
-
-    document.getElementById("studentClass").value = "";
-
-    document.getElementById("dob").value = "";
-
-    document.getElementById("gender").value = "";
-
-    document.getElementById("phone").value = "";
-
-    document.getElementById("photo").value = "";
-
-
-    const preview =
-        document.getElementById("photoPreview");
-
-    preview.src = "";
-
-    preview.style.display =
-        "none";
-
-
-    document.getElementById("studentForm").style.display =
-        "none";
-
-}
-
-
 /* SEAT ALLOTMENT */
-
-function showClassStudents(){
+function allotSeats(){
 
     const selectedClass =
-        document.getElementById("seatClass").value;
+        document.getElementById("allotClass")
+        .value
+        .trim();
 
-    const list =
-        document.getElementById("seatList");
+
+    const seatFromValue =
+        document.getElementById("seatFrom")
+        .value
+        .trim();
+
 
     const message =
         document.getElementById("allotMessage");
 
 
-    list.innerHTML = "";
+    const seatList =
+        document.getElementById("seatList");
 
-    message.style.display = "none";
+
+    message.innerHTML = "";
 
 
     if(!selectedClass){
+
+        message.innerHTML = `
+            <div style="color:#b91c1c;margin-top:10px;">
+                ⚠️ Class likhen.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    if(!seatFromValue){
+
+        message.innerHTML = `
+            <div style="color:#b91c1c;margin-top:10px;">
+                ⚠️ Seat From number likhen.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    const startingSeat =
+        parseInt(seatFromValue,10);
+
+
+    if(isNaN(startingSeat)){
+
+        message.innerHTML = `
+            <div style="color:#b91c1c;margin-top:10px;">
+                ⚠️ Seat From mein valid number likhen.
+            </div>
+        `;
+
         return;
     }
 
@@ -1090,52 +953,49 @@ function showClassStudents(){
     const classStudents =
         students.filter(function(student){
 
-            return student.studentClass === selectedClass;
+            return String(student.studentClass)
+                .trim()
+                .toLowerCase()
+                === selectedClass.toLowerCase();
 
         });
 
 
     if(classStudents.length === 0){
 
-        message.innerText =
-            "No students found in Class " +
-            selectedClass +
-            ". Add students first.";
+        seatList.innerHTML = `
+            <div class="empty">
+                Class ${escapeHtml(selectedClass)}
+                mein koi student nahi mila.
+            </div>
+        `;
 
-        message.style.display =
-            "block";
+        message.innerHTML = `
+            <div style="color:#b91c1c;margin-top:10px;">
+                ⚠️ Pehle is class ke students add karein.
+            </div>
+        `;
 
         return;
     }
 
 
-    message.innerText =
-        "✅ " +
-        classStudents.length +
-        " students found in Class " +
-        selectedClass +
-        ". Seats allotted from 1 to " +
-        classStudents.length +
-        ".";
-
-    message.style.display =
-        "block";
+    seatList.innerHTML = "";
 
 
     classStudents.forEach(function(student,index){
 
         const seatNumber =
-            index + 1;
+            startingSeat + index;
 
 
-        const card =
+        const div =
             document.createElement("div");
 
-        card.className =
-            "seat-card";
+        div.className = "seat-card";
 
 
-        card.innerHTML = `
+        div.innerHTML = `
 
             <div class="seat-number">
                 ${seatNumber}
@@ -1144,17 +1004,17 @@ function showClassStudents(){
             <div class="seat-info">
 
                 <h3>
-                    ${escapeHTML(student.name)}
+                    ${escapeHtml(student.name)}
                 </h3>
 
                 <p>
                     Father:
-                    ${escapeHTML(student.father)}
+                    ${escapeHtml(student.father || "-")}
                 </p>
 
                 <p>
                     Class:
-                    ${escapeHTML(student.studentClass)}
+                    ${escapeHtml(student.studentClass)}
                 </p>
 
             </div>
@@ -1162,34 +1022,43 @@ function showClassStudents(){
         `;
 
 
-        list.appendChild(card);
+        seatList.appendChild(div);
 
     });
 
+
+    const lastSeat =
+        startingSeat + classStudents.length - 1;
+
+
+    message.innerHTML = `
+        <div class="message">
+            ✅ ${classStudents.length} students ko
+            Seat ${startingSeat} se ${lastSeat}
+            tak allot ho gayi hain.
+        </div>
+    `;
+
 }
 
 
-/* SECURITY */
+/* SECURITY HELPER */
+function escapeHtml(text){
 
-function escapeHTML(text){
+    if(text === null || text === undefined){
+        return "";
+    }
 
     return String(text)
-
         .replace(/&/g,"&amp;")
-
         .replace(/</g,"&lt;")
-
         .replace(/>/g,"&gt;")
-
         .replace(/"/g,"&quot;")
-
         .replace(/'/g,"&#039;");
-
 }
 
 
-/* START */
-
+/* INITIAL LOAD */
 displayStudents();
 
 </script>
