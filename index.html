@@ -21,13 +21,13 @@ body{
 .header{
     background:linear-gradient(135deg,#0f3d68,#1677b7);
     color:white;
-    padding:25px 18px;
+    padding:25px 15px;
     text-align:center;
 }
 
 .header h1{
     margin:0;
-    font-size:24px;
+    font-size:23px;
 }
 
 .header p{
@@ -124,6 +124,112 @@ body{
     margin-top:0;
 }
 
+.form-group{
+    margin-bottom:14px;
+}
+
+.form-group label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:6px;
+    font-size:14px;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.photo-preview{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #dbeafe;
+    display:none;
+    margin:10px auto;
+}
+
+.btn{
+    border:0;
+    border-radius:8px;
+    padding:11px 16px;
+    cursor:pointer;
+    font-size:14px;
+    margin:3px;
+}
+
+.btn-primary{
+    background:#0f3d68;
+    color:white;
+}
+
+.btn-edit{
+    background:#f59e0b;
+    color:white;
+}
+
+.btn-delete{
+    background:#dc2626;
+    color:white;
+}
+
+.btn-secondary{
+    background:#64748b;
+    color:white;
+}
+
+.search{
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    margin:15px 0;
+    font-size:15px;
+}
+
+.student-card{
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    padding:15px;
+    margin-bottom:12px;
+}
+
+.student-top{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.student-photo{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid #dbeafe;
+}
+
+.student-info h3{
+    margin:0 0 5px;
+}
+
+.student-info p{
+    margin:3px 0;
+    font-size:14px;
+    color:#475569;
+}
+
+.empty{
+    text-align:center;
+    padding:25px;
+    color:#64748b;
+}
+
 .footer{
     text-align:center;
     padding:25px 10px;
@@ -134,10 +240,6 @@ body{
 @media(max-width:600px){
     .grid{
         grid-template-columns:1fr 1fr;
-    }
-
-    .header h1{
-        font-size:20px;
     }
 }
 
@@ -151,7 +253,6 @@ body{
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
     <h1>🏫 Moon Star Public High School Khanwahan</h1>
     <p>School Management System</p>
@@ -159,44 +260,686 @@ body{
 
 <div class="container">
 
-    <!-- DASHBOARD -->
-    <div id="dashboard" class="page active">
+<!-- DASHBOARD -->
+<div id="dashboard" class="page active">
 
-        <div class="welcome">
-            <h2>Welcome to School Management</h2>
-            <p>Manage your school information from one place.</p>
+    <div class="welcome">
+        <h2>Welcome to School Management</h2>
+        <p>Manage your school information from one place.</p>
+    </div>
+
+    <div class="grid">
+
+        <div class="card" onclick="openPage('students')">
+            <div class="icon">👨‍🎓</div>
+            <h3>Students</h3>
+            <p>Student management</p>
         </div>
 
-        <div class="grid">
+        <div class="card" onclick="openPage('results')">
+            <div class="icon">📝</div>
+            <h3>Results</h3>
+            <p>Examination & results</p>
+        </div>
 
-            <div class="card" onclick="openPage('students')">
-                <div class="icon">👨‍🎓</div>
-                <h3>Students</h3>
-                <p>Student management</p>
-            </div>
+        <div class="card" onclick="openPage('reports')">
+            <div class="icon">📊</div>
+            <h3>Reports</h3>
+            <p>School reports</p>
+        </div>
 
-            <div class="card" onclick="openPage('results')">
-                <div class="icon">📝</div>
-                <h3>Results</h3>
-                <p>Examination & results</p>
-            </div>
-
-            <div class="card" onclick="openPage('reports')">
-                <div class="icon">📊</div>
-                <h3>Reports</h3>
-                <p>School reports</p>
-            </div>
-
-            <div class="card" onclick="openPage('settings')">
-                <div class="icon">⚙️</div>
-                <h3>Settings</h3>
-                <p>System settings</p>
-            </div>
-
+        <div class="card" onclick="openPage('settings')">
+            <div class="icon">⚙️</div>
+            <h3>Settings</h3>
+            <p>System settings</p>
         </div>
 
     </div>
+</div>
 
 
-    <!-- STUDENTS -->
-    <div id="students" class="page">
+<!-- STUDENTS -->
+<div id="students" class="page">
+
+    <div class="back" onclick="openPage('dashboard')">
+        ← Back
+    </div>
+
+    <div class="section-box">
+
+        <h2>👨‍🎓 Students</h2>
+
+        <button class="btn btn-primary" onclick="showStudentForm()">
+            ➕ Add Student
+        </button>
+
+        <input
+            type="text"
+            id="searchStudent"
+            class="search"
+            placeholder="🔍 Search student..."
+            oninput="displayStudents()"
+        >
+
+        <div id="studentForm" style="display:none;">
+
+            <hr>
+
+            <h3 id="formTitle">➕ Add New Student</h3>
+
+            <div class="form-group">
+                <label>Student Name</label>
+                <input type="text" id="studentName" placeholder="Enter student name">
+            </div>
+
+            <div class="form-group">
+                <label>Father Name</label>
+                <input type="text" id="fatherName" placeholder="Enter father name">
+            </div>
+
+            <div class="form-group">
+                <label>Class</label>
+                <select id="studentClass">
+                    <option value="">Select Class</option>
+                    <option>Play</option>
+                    <option>Nursery</option>
+                    <option>KG</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Date of Birth</label>
+                <input type="date" id="dob">
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                <select id="gender">
+                    <option value="">Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter phone number"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Student Photo</label>
+                <input
+                    type="file"
+                    id="photo"
+                    accept="image/*"
+                    onchange="previewPhoto(event)"
+                >
+
+                <img id="photoPreview" class="photo-preview">
+            </div>
+
+            <button class="btn btn-primary" onclick="saveStudent()">
+                💾 Save Student
+            </button>
+
+            <button class="btn btn-secondary" onclick="cancelForm()">
+                Cancel
+            </button>
+
+        </div>
+
+        <hr>
+
+        <h3>📋 Student List</h3>
+
+        <div id="studentList"></div>
+
+    </div>
+</div>
+
+
+<!-- RESULTS -->
+<div id="results" class="page">
+
+    <div class="back" onclick="openPage('dashboard')">
+        ← Back
+    </div>
+
+    <div class="section-box">
+
+        <h2>📝 Results / Examination</h2>
+
+        <p>
+            Result management will be added here later.
+        </p>
+
+    </div>
+</div>
+
+
+<!-- REPORTS -->
+<div id="reports" class="page">
+
+    <div class="back" onclick="openPage('dashboard')">
+        ← Back
+    </div>
+
+    <div class="section-box">
+
+        <h2>📊 Reports</h2>
+
+        <p>
+            School reports will be added here later.
+        </p>
+
+    </div>
+</div>
+
+
+<!-- SETTINGS -->
+<div id="settings" class="page">
+
+    <div class="back" onclick="openPage('dashboard')">
+        ← Back
+    </div>
+
+    <div class="section-box">
+
+        <h2>⚙️ Settings</h2>
+
+        <p>
+            <b>School Name:</b><br>
+            Moon Star Public High School Khanwahan
+        </p>
+
+        <hr>
+
+        <p>
+            System settings will be added here later.
+        </p>
+
+    </div>
+</div>
+
+</div>
+
+<div class="footer">
+    © 2026 Moon Star Public High School Khanwahan
+</div>
+
+
+<script>
+
+let students = JSON.parse(localStorage.getItem("schoolStudents")) || [];
+
+let editingId = null;
+let selectedPhoto = "";
+
+
+/* PAGE NAVIGATION */
+
+function openPage(page){
+
+    document.querySelectorAll(".page").forEach(function(item){
+        item.classList.remove("active");
+    });
+
+    document.getElementById(page).classList.add("active");
+
+    if(page === "students"){
+        displayStudents();
+    }
+
+    window.scrollTo(0,0);
+}
+
+
+/* SHOW FORM */
+
+function showStudentForm(){
+
+    document.getElementById("studentForm").style.display = "block";
+
+    document.getElementById("formTitle").innerText =
+        editingId ? "✏️ Edit Student" : "➕ Add New Student";
+
+    window.scrollTo(0,0);
+}
+
+
+/* PHOTO PREVIEW */
+
+function previewPhoto(event){
+
+    const file = event.target.files[0];
+
+    if(!file){
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+
+        selectedPhoto = e.target.result;
+
+        const preview =
+            document.getElementById("photoPreview");
+
+        preview.src = selectedPhoto;
+        preview.style.display = "block";
+    };
+
+    reader.readAsDataURL(file);
+}
+
+
+/* SAVE STUDENT */
+
+function saveStudent(){
+
+    const name =
+        document.getElementById("studentName").value.trim();
+
+    const father =
+        document.getElementById("fatherName").value.trim();
+
+    const studentClass =
+        document.getElementById("studentClass").value;
+
+    const dob =
+        document.getElementById("dob").value;
+
+    const gender =
+        document.getElementById("gender").value;
+
+    const phone =
+        document.getElementById("phone").value.trim();
+
+
+    if(!name || !father || !studentClass){
+
+        alert("Please enter Student Name, Father Name and Class.");
+
+        return;
+    }
+
+
+    if(editingId){
+
+        const index = students.findIndex(
+            s => s.id === editingId
+        );
+
+        if(index !== -1){
+
+            students[index].name = name;
+            students[index].father = father;
+            students[index].studentClass = studentClass;
+            students[index].dob = dob;
+            students[index].gender = gender;
+            students[index].phone = phone;
+
+            if(selectedPhoto){
+                students[index].photo = selectedPhoto;
+            }
+
+        }
+
+    }else{
+
+        const student = {
+
+            id: Date.now(),
+
+            name:name,
+
+            father:father,
+
+            studentClass:studentClass,
+
+            dob:dob,
+
+            gender:gender,
+
+            phone:phone,
+
+            photo:selectedPhoto
+
+        };
+
+        students.push(student);
+
+    }
+
+
+    localStorage.setItem(
+        "schoolStudents",
+        JSON.stringify(students)
+    );
+
+
+    alert(
+        editingId
+        ? "Student updated successfully."
+        : "Student added successfully."
+    );
+
+
+    resetForm();
+
+    displayStudents();
+
+}
+
+
+/* DISPLAY STUDENTS */
+
+function displayStudents(){
+
+    const list =
+        document.getElementById("studentList");
+
+    const search =
+        document.getElementById("searchStudent")
+        .value
+        .toLowerCase();
+
+
+    const filtered =
+        students.filter(function(student){
+
+            return (
+
+                student.name.toLowerCase().includes(search) ||
+
+                student.father.toLowerCase().includes(search) ||
+
+                student.studentClass.toLowerCase().includes(search)
+
+            );
+
+        });
+
+
+    if(filtered.length === 0){
+
+        list.innerHTML =
+            '<div class="empty">No students found.</div>';
+
+        return;
+    }
+
+
+    list.innerHTML = "";
+
+
+    filtered.forEach(function(student){
+
+        const photo =
+            student.photo
+            ? student.photo
+            : "data:image/svg+xml;charset=UTF-8," +
+              encodeURIComponent(
+                `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+                <rect width="100%" height="100%" fill="#dbeafe"/>
+                <text x="50%" y="55%" text-anchor="middle" font-size="35">👨‍🎓</text>
+                </svg>`
+              );
+
+
+        const card =
+            document.createElement("div");
+
+        card.className = "student-card";
+
+
+        card.innerHTML = `
+
+            <div class="student-top">
+
+                <img
+                    src="${photo}"
+                    class="student-photo"
+                >
+
+                <div class="student-info">
+
+                    <h3>${escapeHTML(student.name)}</h3>
+
+                    <p>
+                        <b>Father:</b>
+                        ${escapeHTML(student.father)}
+                    </p>
+
+                    <p>
+                        <b>Class:</b>
+                        ${escapeHTML(student.studentClass)}
+                    </p>
+
+                    <p>
+                        <b>Gender:</b>
+                        ${escapeHTML(student.gender || "-")}
+                    </p>
+
+                    <p>
+                        <b>Phone:</b>
+                        ${escapeHTML(student.phone || "-")}
+                    </p>
+
+                    <p>
+                        <b>DOB:</b>
+                        ${escapeHTML(student.dob || "-")}
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div style="margin-top:12px;">
+
+                <button
+                    class="btn btn-edit"
+                    onclick="editStudent(${student.id})"
+                >
+                    ✏️ Edit
+                </button>
+
+                <button
+                    class="btn btn-delete"
+                    onclick="deleteStudent(${student.id})"
+                >
+                    🗑️ Delete
+                </button>
+
+            </div>
+
+        `;
+
+
+        list.appendChild(card);
+
+    });
+
+}
+
+
+/* EDIT STUDENT */
+
+function editStudent(id){
+
+    const student =
+        students.find(s => s.id === id);
+
+    if(!student){
+        return;
+    }
+
+
+    editingId = id;
+
+    document.getElementById("studentName").value =
+        student.name;
+
+    document.getElementById("fatherName").value =
+        student.father;
+
+    document.getElementById("studentClass").value =
+        student.studentClass;
+
+    document.getElementById("dob").value =
+        student.dob;
+
+    document.getElementById("gender").value =
+        student.gender;
+
+    document.getElementById("phone").value =
+        student.phone;
+
+
+    selectedPhoto =
+        student.photo || "";
+
+
+    if(selectedPhoto){
+
+        const preview =
+            document.getElementById("photoPreview");
+
+        preview.src = selectedPhoto;
+
+        preview.style.display = "block";
+
+    }
+
+
+    showStudentForm();
+
+}
+
+
+/* DELETE STUDENT */
+
+function deleteStudent(id){
+
+    const student =
+        students.find(s => s.id === id);
+
+    if(!student){
+        return;
+    }
+
+
+    const confirmDelete =
+        confirm(
+            "Delete " +
+            student.name +
+            "?"
+        );
+
+
+    if(!confirmDelete){
+        return;
+    }
+
+
+    students =
+        students.filter(
+            s => s.id !== id
+        );
+
+
+    localStorage.setItem(
+        "schoolStudents",
+        JSON.stringify(students)
+    );
+
+
+    displayStudents();
+
+}
+
+
+/* CANCEL FORM */
+
+function cancelForm(){
+
+    resetForm();
+
+}
+
+
+/* RESET FORM */
+
+function resetForm(){
+
+    editingId = null;
+
+    selectedPhoto = "";
+
+
+    document.getElementById("studentName").value = "";
+
+    document.getElementById("fatherName").value = "";
+
+    document.getElementById("studentClass").value = "";
+
+    document.getElementById("dob").value = "";
+
+    document.getElementById("gender").value = "";
+
+    document.getElementById("phone").value = "";
+
+    document.getElementById("photo").value = "";
+
+
+    const preview =
+        document.getElementById("photoPreview");
+
+    preview.src = "";
+
+    preview.style.display = "none";
+
+
+    document.getElementById("studentForm").style.display =
+        "none";
+
+}
+
+
+/* SECURITY */
+
+function escapeHTML(text){
+
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* INITIAL LOAD */
+
+displayStudents();
+
+</script>
+
+</body>
+</html>
