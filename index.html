@@ -170,6 +170,8 @@ th{
     padding:12px;
     margin-bottom:15px;
     page-break-inside:avoid;
+    break-inside:avoid;
+    background:white;
 }
 
 .slip h3{
@@ -192,36 +194,164 @@ th{
     font-size:12px;
 }
 
+
+/* =========================================
+   PRINT FIX - A4 / 4 SLIP CARDS
+========================================= */
+
+@page{
+    size:A4 portrait;
+    margin:8mm;
+}
+
 @media print{
 
-    header,
-    .no-print,
-    .back{
-        display:none!important;
+    html,
+    body{
+        width:210mm;
+        min-height:297mm;
+        margin:0!important;
+        padding:0!important;
+        background:white!important;
     }
 
     body{
-        background:white;
+        -webkit-print-color-adjust:exact!important;
+        print-color-adjust:exact!important;
+    }
+
+    header,
+    .no-print,
+    .back,
+    button,
+    .form-box{
+        display:none!important;
+    }
+
+    .container{
+        width:100%!important;
+        max-width:none!important;
+        margin:0!important;
+        padding:0!important;
     }
 
     .section{
         display:none!important;
-        box-shadow:none;
+        background:white!important;
+        box-shadow:none!important;
+        border-radius:0!important;
+        padding:0!important;
+        margin:0!important;
     }
 
+    /*
+       IMPORTANT:
+       Sirf Slip Card section print hoga.
+    */
     #slipCard.active{
         display:block!important;
+        width:100%!important;
+        visibility:visible!important;
     }
 
-    .slip-area{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:10px;
+    #slipCard.active h2{
+        display:none!important;
     }
 
-    .slip{
-        margin:0;
+    #slipArea{
+        display:grid!important;
+        grid-template-columns:1fr 1fr!important;
+        grid-template-rows:1fr 1fr!important;
+        gap:5mm!important;
+
+        width:100%!important;
+        margin:0!important;
+        padding:0!important;
+
+        visibility:visible!important;
     }
+
+    /*
+       Har 4 cards A4 par 2 x 2.
+    */
+    #slipArea .slip{
+        display:block!important;
+        width:100%!important;
+        height:auto!important;
+        margin:0!important;
+
+        padding:7mm!important;
+
+        border:2px solid #2563eb!important;
+        border-radius:5mm!important;
+
+        background:white!important;
+
+        page-break-inside:avoid!important;
+        break-inside:avoid!important;
+
+        overflow:hidden!important;
+        visibility:visible!important;
+    }
+
+    #slipArea .slip h3{
+        font-size:15px!important;
+        margin:0 0 5px!important;
+        color:#1d4ed8!important;
+    }
+
+    #slipArea .slip p{
+        font-size:12px!important;
+        margin:3px 0!important;
+    }
+
+    #slipArea .slip hr{
+        margin:5px 0!important;
+    }
+
+    #slipArea .slip > b{
+        font-size:12px!important;
+    }
+
+    #slipArea .slip table{
+        width:100%!important;
+        margin-top:5px!important;
+        font-size:9px!important;
+    }
+
+    #slipArea .slip th,
+    #slipArea .slip td{
+        padding:3px!important;
+        border:1px solid #94a3b8!important;
+    }
+
+    #slipArea .slip th{
+        background:#e2e8f0!important;
+    }
+
+    /*
+       Agar class mein 4 se zyada students hon
+       to next cards automatically next A4 page par
+       continue honge.
+    */
+    #slipArea .slip:nth-child(4n+1){
+        break-before:auto;
+    }
+
+}
+
+
+/* Mobile screen */
+@media screen and (max-width:600px){
+
+    .container{
+        padding:10px;
+    }
+
+    .section{
+        padding:15px;
+    }
+
 }
 </style>
 </head>
