@@ -6,7 +6,9 @@
 <title>Moon Star Public High School Khanwahan</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
@@ -22,8 +24,14 @@ header{
     text-align:center;
 }
 
-header h1{margin:0;font-size:23px}
-header p{margin:7px 0 0}
+header h1{
+    margin:0;
+    font-size:23px;
+}
+
+header p{
+    margin:7px 0 0;
+}
 
 .container{
     max-width:1000px;
@@ -39,7 +47,9 @@ header p{margin:7px 0 0}
     box-shadow:0 4px 12px rgba(0,0,0,.08);
 }
 
-.section.active{display:block}
+.section.active{
+    display:block;
+}
 
 .dashboard{
     display:grid;
@@ -107,7 +117,8 @@ button{
     margin-bottom:20px;
 }
 
-input,select{
+input,
+select{
     width:100%;
     padding:11px;
     margin:6px 0 12px;
@@ -122,7 +133,8 @@ table{
     margin-top:15px;
 }
 
-th,td{
+th,
+td{
     border:1px solid #cbd5e1;
     padding:8px;
     text-align:center;
@@ -161,7 +173,8 @@ th{
 
 
 /* =====================================================
-   FINAL A4 SLIP CARD + TIME TABLE DESIGN
+   FINAL SLIP CARD + TIME TABLE
+   A4 = 4 CARDS / 2 x 2
    ===================================================== */
 
 #slipArea{
@@ -171,32 +184,16 @@ th{
 .a4-layout{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:8mm;
-    align-items:start;
-}
-
-.a4-column{
-    display:flex;
-    flex-direction:column;
+    grid-template-rows:1fr 1fr;
     gap:7mm;
+    width:100%;
 }
 
-.final-slip{
-    border:3px solid #1d4ed8;
-    border-radius:12px;
+.final-card{
+    border:2px solid #1d4ed8;
+    border-radius:10px;
     overflow:hidden;
-    background:linear-gradient(180deg,#eff6ff,#ffffff);
-    box-shadow:0 3px 8px rgba(30,64,175,.18);
-    break-inside:avoid;
-    page-break-inside:avoid;
-}
-
-.final-tt{
-    border:3px solid #1d4ed8;
-    border-radius:12px;
-    overflow:hidden;
-    background:linear-gradient(180deg,#eff6ff,#ffffff);
-    box-shadow:0 3px 8px rgba(30,64,175,.18);
+    background:#ffffff;
     break-inside:avoid;
     page-break-inside:avoid;
 }
@@ -205,9 +202,9 @@ th{
     background:linear-gradient(135deg,#1d4ed8,#2563eb);
     color:white;
     text-align:center;
-    padding:9px 6px;
+    padding:7px 5px;
     font-weight:bold;
-    font-size:14px;
+    font-size:13px;
 }
 
 .final-school{
@@ -215,9 +212,9 @@ th{
     color:#111827;
     text-align:center;
     font-weight:bold;
-    padding:8px 5px;
-    font-size:12px;
-    border-bottom:2px solid #1d4ed8;
+    padding:6px 5px;
+    font-size:11px;
+    border-bottom:1px solid #1d4ed8;
 }
 
 .final-yellow-title{
@@ -225,12 +222,12 @@ th{
     color:#111827;
     text-align:center;
     font-weight:bold;
-    padding:6px;
-    font-size:12px;
+    padding:5px;
+    font-size:10px;
 }
 
 .slip-content{
-    padding:9px;
+    padding:7px;
 }
 
 .student-row{
@@ -238,8 +235,8 @@ th{
     justify-content:space-between;
     align-items:center;
     border:1px solid #93c5fd;
-    border-radius:6px;
-    margin:5px 0;
+    border-radius:5px;
+    margin:4px 0;
     background:white;
     overflow:hidden;
 }
@@ -248,75 +245,80 @@ th{
     background:#dbeafe;
     color:#1e3a8a;
     font-weight:bold;
-    padding:6px;
-    min-width:88px;
+    padding:5px;
+    min-width:72px;
+    font-size:10px;
 }
 
 .student-value{
-    padding:6px;
+    padding:5px;
     flex:1;
     text-align:center;
     font-weight:bold;
+    font-size:10px;
 }
 
 .seat-box{
     border:2px solid #1d4ed8;
     background:#fef08a;
-    border-radius:8px;
+    border-radius:7px;
     text-align:center;
-    margin-top:8px;
-    padding:7px;
+    margin-top:6px;
+    padding:5px;
 }
 
 .seat-title{
-    font-size:10px;
+    font-size:8px;
     font-weight:bold;
     color:#1e3a8a;
 }
 
 .seat-number{
-    font-size:18px;
+    font-size:16px;
     font-weight:bold;
     color:#111827;
 }
 
+
+/* TIME TABLE */
+
+.final-tt{
+    margin-top:7px;
+    border-top:2px solid #1d4ed8;
+}
+
 .final-tt .tt-title{
-    background:#facc15;
+    background:#fde68a;
     color:#111827;
     text-align:center;
-    padding:6px;
-    font-size:12px;
+    padding:5px;
+    font-size:10px;
     font-weight:bold;
 }
 
 .final-tt table{
     margin:0;
     width:100%;
-    font-size:9px;
+    font-size:8px;
     background:white;
+    border-collapse:collapse;
 }
 
 .final-tt th{
     background:#2563eb;
     color:white;
     border:1px solid #1d4ed8;
-    padding:5px 3px;
+    padding:3px 2px;
 }
 
 .final-tt td{
     border:1px solid #93c5fd;
-    padding:5px 3px;
+    padding:3px 2px;
+    text-align:center;
 }
 
 .final-tt tr:nth-child(even) td{
     background:#eff6ff;
-}
-
-.print-note{
-    text-align:center;
-    color:#64748b;
-    font-size:11px;
-    padding:5px;
 }
 
 
@@ -331,8 +333,10 @@ th{
 
 @media print{
 
-    html,body{
+    html,
+    body{
         width:210mm;
+        height:297mm;
         min-height:297mm;
         margin:0!important;
         padding:0!important;
@@ -386,44 +390,28 @@ th{
     .a4-layout{
         display:grid!important;
         grid-template-columns:1fr 1fr!important;
+        grid-template-rows:1fr 1fr!important;
         gap:5mm!important;
         width:100%!important;
+        height:285mm!important;
         align-items:start!important;
     }
 
-    .a4-column{
-        display:flex!important;
-        flex-direction:column!important;
-        gap:5mm!important;
-    }
-
-    .final-slip,
-    .final-tt{
+    .final-card{
+        width:100%!important;
         box-shadow:none!important;
         break-inside:avoid!important;
         page-break-inside:avoid!important;
     }
 
-    .final-blue-head{
-        -webkit-print-color-adjust:exact!important;
-        print-color-adjust:exact!important;
-    }
-
+    .final-blue-head,
     .final-school,
     .final-yellow-title,
-    .seat-box,
+    .final-tt .tt-title,
     .final-tt th,
-    .final-tt td{
+    .seat-box{
         -webkit-print-color-adjust:exact!important;
         print-color-adjust:exact!important;
-    }
-
-    .final-slip{
-        min-height:55mm;
-    }
-
-    .final-tt{
-        min-height:55mm;
     }
 }
 </style>
@@ -1084,7 +1072,8 @@ function getTimetable(cls){
 
 
 /* =========================
-   FINAL SLIP + TIMETABLE
+   FINAL SLIP + TIME TABLE
+   4 CARDS / 2 x 2
    ========================= */
 
 function makeSlips(){
@@ -1117,29 +1106,37 @@ function makeSlips(){
         return;
     }
 
+    var timetable=getTimetable(cls);
+
     /*
-       Final page:
-       LEFT  = 4 Slip Cards
-       RIGHT = 4 Time Tables
+       FINAL:
+       A4 PAGE
+       4 CARDS
+       2 x 2
+
+       Each card contains:
+       SLIP CARD
+       + TIME TABLE
+
+       No signature under timetable.
     */
 
     var printCount=Math.min(list.length,4);
 
-    var timetable=getTimetable(cls);
-
-    var leftHTML="";
-    var rightHTML="";
+    var cardsHTML="";
 
     for(var i=0;i<printCount;i++){
 
         var s=list[i];
 
-        /* =========================
-           SLIP CARD
-           ========================= */
+        cardsHTML+=
 
-        leftHTML+=
-        "<div class='final-slip'>"+
+        "<div class='final-card'>"+
+
+
+            /* =====================
+               SLIP CARD
+               ===================== */
 
             "<div class='final-blue-head'>"+
                 "🎫 SLIP CARD"+
@@ -1185,38 +1182,33 @@ function makeSlips(){
 
             "</div>"+
 
-        "</div>";
-    }
 
+            /* =====================
+               TIME TABLE
+               ===================== */
 
-    /* =========================
-       TIME TABLES
-       ========================= */
+            "<div class='final-tt'>"+
 
-    for(var t=0;t<printCount;t++){
+                "<div class='final-blue-head'>"+
+                    "📅 TIME TABLE"+
+                "</div>"+
 
-        rightHTML+=
-        "<div class='final-tt'>"+
+                "<div class='tt-title'>"+
+                    "Class: "+safe(cls)+
+                "</div>"+
 
-            "<div class='final-blue-head'>"+
-                "📅 TIME TABLE"+
-            "</div>"+
+                "<table>"+
 
-            "<div class='tt-title'>"+
-                "Class: "+safe(cls)+
-            "</div>"+
-
-            "<table>"+
-
-                "<tr>"+
-                    "<th>Day</th>"+
-                    "<th>Subject</th>"+
-                    "<th>Time</th>"+
-                "</tr>";
+                    "<tr>"+
+                        "<th>Day</th>"+
+                        "<th>Subject</th>"+
+                        "<th>Time</th>"+
+                    "</tr>";
 
         for(var d=0;d<timetable.length;d++){
 
-            rightHTML+=
+            cardsHTML+=
+
                 "<tr>"+
 
                     "<td>"+
@@ -1234,28 +1226,18 @@ function makeSlips(){
                 "</tr>";
         }
 
-        rightHTML+=
-            "</table>"+
+        cardsHTML+=
 
-            "<div class='print-note'>"+
-                "Moon Star Public High School"+
+                "</table>"+
+
             "</div>"+
 
         "</div>";
     }
 
-
     area.innerHTML=
         "<div class='a4-layout'>"+
-
-            "<div class='a4-column'>"+
-                leftHTML+
-            "</div>"+
-
-            "<div class='a4-column'>"+
-                rightHTML+
-            "</div>"+
-
+            cardsHTML+
         "</div>";
 }
 
