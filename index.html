@@ -6,9 +6,7 @@
 <title>Moon Star Public High School Khanwahan</title>
 
 <style>
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
     margin:0;
@@ -24,14 +22,8 @@ header{
     text-align:center;
 }
 
-header h1{
-    margin:0;
-    font-size:23px;
-}
-
-header p{
-    margin:7px 0 0;
-}
+header h1{margin:0;font-size:23px}
+header p{margin:7px 0 0}
 
 .container{
     max-width:1000px;
@@ -47,9 +39,7 @@ header p{
     box-shadow:0 4px 12px rgba(0,0,0,.08);
 }
 
-.section.active{
-    display:block;
-}
+.section.active{display:block}
 
 .dashboard{
     display:grid;
@@ -67,9 +57,7 @@ header p{
     font-weight:bold;
 }
 
-.menu-card:active{
-    transform:scale(.97);
-}
+.menu-card:active{transform:scale(.97)}
 
 .icon{
     font-size:38px;
@@ -95,20 +83,9 @@ button{
     margin-bottom:15px;
 }
 
-.primary{
-    background:#2563eb;
-    color:white;
-}
-
-.success{
-    background:#16a34a;
-    color:white;
-}
-
-.danger{
-    background:#dc2626;
-    color:white;
-}
+.primary{background:#2563eb;color:white}
+.success{background:#16a34a;color:white}
+.danger{background:#dc2626;color:white}
 
 .form-box{
     background:#f8fafc;
@@ -117,8 +94,7 @@ button{
     margin-bottom:20px;
 }
 
-input,
-select{
+input,select{
     width:100%;
     padding:11px;
     margin:6px 0 12px;
@@ -133,16 +109,13 @@ table{
     margin-top:15px;
 }
 
-th,
-td{
+th,td{
     border:1px solid #cbd5e1;
     padding:8px;
     text-align:center;
 }
 
-th{
-    background:#e2e8f0;
-}
+th{background:#e2e8f0}
 
 .message{
     display:none;
@@ -173,8 +146,8 @@ th{
 
 
 /* =====================================================
-   FINAL SLIP CARD + TIME TABLE
-   A4 = 4 CARDS / 2 x 2
+   SLIP CARD
+   4 CARDS ON A4
    ===================================================== */
 
 #slipArea{
@@ -185,15 +158,15 @@ th{
     display:grid;
     grid-template-columns:1fr 1fr;
     grid-template-rows:1fr 1fr;
-    gap:7mm;
+    gap:5mm;
     width:100%;
 }
 
 .final-card{
     border:2px solid #1d4ed8;
-    border-radius:10px;
+    border-radius:9px;
     overflow:hidden;
-    background:#ffffff;
+    background:#fff;
     break-inside:avoid;
     page-break-inside:avoid;
 }
@@ -202,7 +175,7 @@ th{
     background:linear-gradient(135deg,#1d4ed8,#2563eb);
     color:white;
     text-align:center;
-    padding:7px 5px;
+    padding:6px 4px;
     font-weight:bold;
     font-size:13px;
 }
@@ -212,18 +185,18 @@ th{
     color:#111827;
     text-align:center;
     font-weight:bold;
-    padding:6px 5px;
-    font-size:11px;
+    padding:6px 4px;
+    font-size:12px;
     border-bottom:1px solid #1d4ed8;
 }
 
-.final-yellow-title{
+.exam-title{
     background:#fde68a;
     color:#111827;
     text-align:center;
     font-weight:bold;
     padding:5px;
-    font-size:10px;
+    font-size:11px;
 }
 
 .slip-content{
@@ -232,8 +205,7 @@ th{
 
 .student-row{
     display:flex;
-    justify-content:space-between;
-    align-items:center;
+    align-items:stretch;
     border:1px solid #93c5fd;
     border-radius:5px;
     margin:4px 0;
@@ -246,7 +218,7 @@ th{
     color:#1e3a8a;
     font-weight:bold;
     padding:5px;
-    min-width:72px;
+    width:78px;
     font-size:10px;
 }
 
@@ -263,8 +235,9 @@ th{
     background:#fef08a;
     border-radius:7px;
     text-align:center;
-    margin-top:6px;
+    margin:6px auto 5px;
     padding:5px;
+    width:55%;
 }
 
 .seat-title{
@@ -274,25 +247,36 @@ th{
 }
 
 .seat-number{
-    font-size:16px;
+    font-size:17px;
     font-weight:bold;
     color:#111827;
 }
 
 
-/* TIME TABLE */
+/* =====================================================
+   TIME TABLE ON EACH CARD
+   ===================================================== */
 
 .final-tt{
-    margin-top:7px;
+    margin-top:5px;
     border-top:2px solid #1d4ed8;
 }
 
-.final-tt .tt-title{
+.final-tt-title{
+    background:#2563eb;
+    color:white;
+    text-align:center;
+    padding:4px;
+    font-size:10px;
+    font-weight:bold;
+}
+
+.final-tt-class{
     background:#fde68a;
     color:#111827;
     text-align:center;
-    padding:5px;
-    font-size:10px;
+    padding:3px;
+    font-size:9px;
     font-weight:bold;
 }
 
@@ -328,16 +312,14 @@ th{
 
 @page{
     size:A4 portrait;
-    margin:6mm;
+    margin:5mm;
 }
 
 @media print{
 
-    html,
-    body{
+    html,body{
         width:210mm;
         height:297mm;
-        min-height:297mm;
         margin:0!important;
         padding:0!important;
         background:white!important;
@@ -391,9 +373,9 @@ th{
         display:grid!important;
         grid-template-columns:1fr 1fr!important;
         grid-template-rows:1fr 1fr!important;
-        gap:5mm!important;
+        gap:4mm!important;
         width:100%!important;
-        height:285mm!important;
+        height:287mm!important;
         align-items:start!important;
     }
 
@@ -406,8 +388,9 @@ th{
 
     .final-blue-head,
     .final-school,
-    .final-yellow-title,
-    .final-tt .tt-title,
+    .exam-title,
+    .final-tt-title,
+    .final-tt-class,
     .final-tt th,
     .seat-box{
         -webkit-print-color-adjust:exact!important;
@@ -420,8 +403,8 @@ th{
 <body>
 
 <header>
-    <h1>🏫 Moon Star Public High School Khanwahan</h1>
-    <p>School Management System</p>
+<h1>🏫 Moon Star Public High School Khanwahan</h1>
+<p>School Management System</p>
 </header>
 
 <div class="container">
@@ -473,9 +456,7 @@ Settings
 <!-- STUDENTS -->
 <div id="students" class="section">
 
-<button class="back" onclick="openPage('dashboard')">
-⬅ Back
-</button>
+<button class="back" onclick="openPage('dashboard')">⬅ Back</button>
 
 <h2>👨‍🎓 Students</h2>
 
@@ -490,9 +471,7 @@ Settings
 <label>Class</label>
 <input id="studentClass" placeholder="Example: V-A">
 
-<button class="primary" onclick="addStudent()">
-➕ Save Student
-</button>
+<button class="primary" onclick="addStudent()">➕ Save Student</button>
 
 <div id="studentMessage" class="message"></div>
 
@@ -506,9 +485,7 @@ Settings
 <!-- SEAT -->
 <div id="seat" class="section">
 
-<button class="back" onclick="openPage('dashboard')">
-⬅ Back
-</button>
+<button class="back" onclick="openPage('dashboard')">⬅ Back</button>
 
 <h2>🪑 Seat Allotment</h2>
 
@@ -520,9 +497,7 @@ Settings
 <label>Starting Seat Number</label>
 <input id="startSeat" type="number" value="1">
 
-<button class="primary" onclick="allotSeats()">
-🪑 Allot Seats
-</button>
+<button class="primary" onclick="allotSeats()">🪑 Allot Seats</button>
 
 <div id="seatMessage" class="message"></div>
 
@@ -578,10 +553,7 @@ Settings
 
 <label>Class</label>
 
-<input
-id="ttClass"
-placeholder="Example: V-A"
->
+<input id="ttClass" placeholder="Example: V-A">
 
 <button class="primary" onclick="loadTimetable()">
 📂 Load Time Table
@@ -633,9 +605,7 @@ Result entry section is ready.
 
 <h3>👨‍🎓 Student Report</h3>
 
-<p id="reportStudents">
-Total Students: 0
-</p>
+<p id="reportStudents">Total Students: 0</p>
 
 </div>
 
@@ -643,9 +613,7 @@ Total Students: 0
 
 <h3>🪑 Seat Report</h3>
 
-<p>
-Seat numbers are managed from Seat Allotment.
-</p>
+<p>Seat numbers are managed from Seat Allotment.</p>
 
 </div>
 
@@ -685,9 +653,7 @@ value="Moon Star Public High School Khanwahan"
 
 <script>
 
-/* =========================
-   NAVIGATION
-   ========================= */
+/* NAVIGATION */
 
 function openPage(page){
 
@@ -703,27 +669,14 @@ function openPage(page){
         selected.classList.add("active");
     }
 
-    if(page==="students"){
-        showStudents();
-    }
-
-    if(page==="seat"){
-        showSeatStudents();
-    }
-
-    if(page==="slipCard"){
-        loadSlipClasses();
-    }
-
-    if(page==="reports"){
-        updateReports();
-    }
+    if(page==="students") showStudents();
+    if(page==="seat") showSeatStudents();
+    if(page==="slipCard") loadSlipClasses();
+    if(page==="reports") updateReports();
 }
 
 
-/* =========================
-   STORAGE
-   ========================= */
+/* STORAGE */
 
 function getStudents(){
 
@@ -731,12 +684,10 @@ function getStudents(){
         return JSON.parse(
             localStorage.getItem("moonStarStudents") || "[]"
         );
-    }
-    catch(e){
+    }catch(e){
         return [];
     }
 }
-
 
 function saveStudents(data){
 
@@ -747,27 +698,16 @@ function saveStudents(data){
 }
 
 
-/* =========================
-   ADD STUDENT
-   ========================= */
+/* ADD STUDENT */
 
 function addStudent(){
 
-    var name=
-        document.getElementById("studentName").value.trim();
-
-    var father=
-        document.getElementById("fatherName").value.trim();
-
-    var cls=
-        document.getElementById("studentClass").value.trim();
+    var name=document.getElementById("studentName").value.trim();
+    var father=document.getElementById("fatherName").value.trim();
+    var cls=document.getElementById("studentClass").value.trim();
 
     if(name==="" || father==="" || cls===""){
-
-        alert(
-            "Please enter Student Name, Father Name and Class."
-        );
-
+        alert("Please enter Student Name, Father Name and Class.");
         return;
     }
 
@@ -787,34 +727,25 @@ function addStudent(){
     document.getElementById("fatherName").value="";
     document.getElementById("studentClass").value="";
 
-    showMessage(
-        "studentMessage",
-        "Student saved successfully."
-    );
+    showMessage("studentMessage","Student saved successfully.");
 
     showStudents();
     updateReports();
 }
 
 
-/* =========================
-   SHOW STUDENTS
-   ========================= */
+/* SHOW STUDENTS */
 
 function showStudents(){
 
     var box=document.getElementById("studentList");
 
-    if(!box){
-        return;
-    }
+    if(!box) return;
 
     var students=getStudents();
 
     if(students.length===0){
-
         box.innerHTML="<p>No students added yet.</p>";
-
         return;
     }
 
@@ -839,9 +770,7 @@ function showStudents(){
             "<td>"+safe(students[i].className)+"</td>"+
             "<td>"+safe(students[i].seat || "-")+"</td>"+
             "<td>"+
-            "<button class='danger small-btn' onclick='deleteStudent("+students[i].id+")'>"+
-            "Delete"+
-            "</button>"+
+            "<button class='danger small-btn' onclick='deleteStudent("+students[i].id+")'>Delete</button>"+
             "</td>"+
             "</tr>";
     }
@@ -852,15 +781,11 @@ function showStudents(){
 }
 
 
-/* =========================
-   DELETE
-   ========================= */
+/* DELETE */
 
 function deleteStudent(id){
 
-    if(!confirm("Delete this student?")){
-        return;
-    }
+    if(!confirm("Delete this student?")) return;
 
     var students=getStudents();
 
@@ -876,14 +801,11 @@ function deleteStudent(id){
 }
 
 
-/* =========================
-   SEAT
-   ========================= */
+/* SEAT */
 
 function allotSeats(){
 
-    var cls=
-        document.getElementById("seatClass").value.trim();
+    var cls=document.getElementById("seatClass").value.trim();
 
     var start=parseInt(
         document.getElementById("startSeat").value,
@@ -891,21 +813,16 @@ function allotSeats(){
     );
 
     if(cls===""){
-
         alert("Please enter class.");
-
         return;
     }
 
     if(isNaN(start)){
-
         alert("Please enter starting seat number.");
-
         return;
     }
 
     var students=getStudents();
-
     var found=0;
 
     for(var i=0;i<students.length;i++){
@@ -915,50 +832,37 @@ function allotSeats(){
             cls.toLowerCase()
         ){
 
-            students[i].seat=
-                String(start+found);
-
+            students[i].seat=String(start+found);
             found++;
         }
     }
 
     if(found===0){
-
         alert("No students found in this class.");
-
         return;
     }
 
     saveStudents(students);
 
-    showMessage(
-        "seatMessage",
-        "Seats allotted successfully."
-    );
+    showMessage("seatMessage","Seats allotted successfully.");
 
     showSeatStudents();
     showStudents();
 }
 
 
-/* =========================
-   SHOW SEATS
-   ========================= */
+/* SHOW SEATS */
 
 function showSeatStudents(){
 
     var box=document.getElementById("seatList");
 
-    if(!box){
-        return;
-    }
+    if(!box) return;
 
     var students=getStudents();
 
     if(students.length===0){
-
         box.innerHTML="<p>No students available.</p>";
-
         return;
     }
 
@@ -986,34 +890,27 @@ function showSeatStudents(){
 }
 
 
-/* =========================
-   SLIP CLASSES
-   ========================= */
+/* SLIP CLASSES */
 
 function loadSlipClasses(){
 
     var select=document.getElementById("slipClass");
 
     var students=getStudents();
-
     var classes=[];
 
     for(var i=0;i<students.length;i++){
 
         var cls=students[i].className;
 
-        if(
-            cls &&
-            classes.indexOf(cls)===-1
-        ){
+        if(cls && classes.indexOf(cls)===-1){
             classes.push(cls);
         }
     }
 
     classes.sort();
 
-    select.innerHTML=
-        "<option value=''>Select Class</option>";
+    select.innerHTML="<option value=''>Select Class</option>";
 
     for(var j=0;j<classes.length;j++){
 
@@ -1027,9 +924,7 @@ function loadSlipClasses(){
 }
 
 
-/* =========================
-   TIMETABLE DATA
-   ========================= */
+/* TIMETABLE */
 
 var days=[
     "Monday",
@@ -1040,20 +935,15 @@ var days=[
     "Saturday"
 ];
 
-
 function getTimetable(cls){
 
-    var saved=
-        localStorage.getItem(
-            "moonStarTT_"+cls
-        );
+    var saved=localStorage.getItem("moonStarTT_"+cls);
 
     if(saved){
 
         try{
             return JSON.parse(saved);
-        }
-        catch(e){}
+        }catch(e){}
     }
 
     var data=[];
@@ -1071,195 +961,160 @@ function getTimetable(cls){
 }
 
 
-/* =========================
-   FINAL SLIP + TIME TABLE
-   4 CARDS / 2 x 2
-   ========================= */
+/* =====================================================
+   GENERATE SLIP CARDS
+   4 CARDS PER A4 PAGE
+   ===================================================== */
 
 function makeSlips(){
 
-    var cls=
-        document.getElementById("slipClass").value;
-
-    var area=
-        document.getElementById("slipArea");
+    var cls=document.getElementById("slipClass").value;
+    var area=document.getElementById("slipArea");
 
     if(cls===""){
-
         alert("Please select class.");
-
         return;
     }
 
     var students=getStudents();
 
     var list=students.filter(function(student){
-
         return student.className===cls;
-
     });
 
     if(list.length===0){
-
         area.innerHTML="<p>No students found.</p>";
-
         return;
     }
 
     var timetable=getTimetable(cls);
 
     /*
-       FINAL:
-       A4 PAGE
-       4 CARDS
-       2 x 2
-
-       Each card contains:
-       SLIP CARD
-       + TIME TABLE
-
-       No signature under timetable.
+       We create a new A4 page after every 4 cards.
+       This means if the class has 20 students,
+       5 A4 pages will be created.
     */
 
-    var printCount=Math.min(list.length,4);
+    var pagesHTML="";
 
-    var cardsHTML="";
+    for(var start=0;start<list.length;start+=4){
 
-    for(var i=0;i<printCount;i++){
+        pagesHTML+="<div class='a4-layout'>";
 
-        var s=list[i];
+        var end=Math.min(start+4,list.length);
 
-        cardsHTML+=
+        for(var i=start;i<end;i++){
 
-        "<div class='final-card'>"+
+            var s=list[i];
 
-
-            /* =====================
-               SLIP CARD
-               ===================== */
-
-            "<div class='final-blue-head'>"+
-                "🎫 SLIP CARD"+
-            "</div>"+
-
-            "<div class='final-school'>"+
-                "Moon Star Public High School Khanwahan"+
-            "</div>"+
-
-            "<div class='final-yellow-title'>"+
-                "STUDENT EXAM / SLIP CARD"+
-            "</div>"+
-
-            "<div class='slip-content'>"+
-
-                "<div class='student-row'>"+
-                    "<div class='student-label'>Student</div>"+
-                    "<div class='student-value'>"+
-                        safe(s.name)+
-                    "</div>"+
-                "</div>"+
-
-                "<div class='student-row'>"+
-                    "<div class='student-label'>Father</div>"+
-                    "<div class='student-value'>"+
-                        safe(s.father)+
-                    "</div>"+
-                "</div>"+
-
-                "<div class='student-row'>"+
-                    "<div class='student-label'>Class</div>"+
-                    "<div class='student-value'>"+
-                        safe(s.className)+
-                    "</div>"+
-                "</div>"+
-
-                "<div class='seat-box'>"+
-                    "<div class='seat-title'>SEAT NUMBER</div>"+
-                    "<div class='seat-number'>"+
-                        safe(s.seat || "-")+
-                    "</div>"+
-                "</div>"+
-
-            "</div>"+
-
-
-            /* =====================
-               TIME TABLE
-               ===================== */
-
-            "<div class='final-tt'>"+
+            pagesHTML+=
+            "<div class='final-card'>"+
 
                 "<div class='final-blue-head'>"+
-                    "📅 TIME TABLE"+
+                    "🎫 SLIP CARD"+
                 "</div>"+
 
-                "<div class='tt-title'>"+
-                    "Class: "+safe(cls)+
+                "<div class='final-school'>"+
+                    "Moon Star Public High School Khanwahan"+
                 "</div>"+
 
-                "<table>"+
+                "<div class='exam-title'>"+
+                    "TERMINAL EXAMINATION 2026-27"+
+                "</div>"+
 
+                "<div class='slip-content'>"+
+
+                    "<div class='student-row'>"+
+                        "<div class='student-label'>Student</div>"+
+                        "<div class='student-value'>"+
+                            safe(s.name)+
+                        "</div>"+
+                    "</div>"+
+
+                    "<div class='student-row'>"+
+                        "<div class='student-label'>Father</div>"+
+                        "<div class='student-value'>"+
+                            safe(s.father)+
+                        "</div>"+
+                    "</div>"+
+
+                    "<div class='student-row'>"+
+                        "<div class='student-label'>Class</div>"+
+                        "<div class='student-value'>"+
+                            safe(s.className)+
+                        "</div>"+
+                    "</div>"+
+
+                    "<div class='seat-box'>"+
+                        "<div class='seat-title'>SEAT NUMBER</div>"+
+                        "<div class='seat-number'>"+
+                            safe(s.seat || "-")+
+                        "</div>"+
+                    "</div>"+
+
+                "</div>"+
+
+                "<div class='final-tt'>"+
+
+                    "<div class='final-tt-title'>"+
+                        "📅 TIME TABLE"+
+                    "</div>"+
+
+                    "<div class='final-tt-class'>"+
+                        "Class: "+safe(cls)+
+                    "</div>"+
+
+                    "<table>"+
                     "<tr>"+
                         "<th>Day</th>"+
                         "<th>Subject</th>"+
                         "<th>Time</th>"+
                     "</tr>";
 
-        for(var d=0;d<timetable.length;d++){
+            for(var d=0;d<timetable.length;d++){
 
-            cardsHTML+=
+                pagesHTML+=
+                    "<tr>"+
+                        "<td>"+safe(timetable[d].day)+"</td>"+
+                        "<td>"+safe(timetable[d].subject || "-")+"</td>"+
+                        "<td>"+safe(timetable[d].time || "-")+"</td>"+
+                    "</tr>";
+            }
 
-                "<tr>"+
+            pagesHTML+=
+                    "</table>"+
+                "</div>"+
 
-                    "<td>"+
-                        safe(timetable[d].day)+
-                    "</td>"+
-
-                    "<td>"+
-                        safe(timetable[d].subject || "-")+
-                    "</td>"+
-
-                    "<td>"+
-                        safe(timetable[d].time || "-")+
-                    "</td>"+
-
-                "</tr>";
+            "</div>";
         }
 
-        cardsHTML+=
+        /*
+           Empty boxes are added so the final page
+           still keeps the 2 x 2 layout.
+        */
 
-                "</table>"+
+        var remaining=4-(end-start);
 
-            "</div>"+
+        for(var x=0;x<remaining;x++){
+            pagesHTML+="<div></div>";
+        }
 
-        "</div>";
+        pagesHTML+="</div>";
     }
 
-    area.innerHTML=
-        "<div class='a4-layout'>"+
-            cardsHTML+
-        "</div>";
+    area.innerHTML=pagesHTML;
 }
 
 
-/* =========================
-   PRINT
-   ========================= */
+/* PRINT */
 
 function printSlips(){
 
-    var area=
-        document.getElementById("slipArea");
+    var area=document.getElementById("slipArea");
 
-    if(
-        !area ||
-        area.innerHTML.trim()===""
-    ){
+    if(!area || area.innerHTML.trim()===""){
 
-        alert(
-            "Please generate Slip Cards first."
-        );
-
+        alert("Please generate Slip Cards first.");
         return;
     }
 
@@ -1267,19 +1122,14 @@ function printSlips(){
 }
 
 
-/* =========================
-   LOAD TIMETABLE
-   ========================= */
+/* LOAD TIMETABLE */
 
 function loadTimetable(){
 
-    var cls=
-        document.getElementById("ttClass").value.trim();
+    var cls=document.getElementById("ttClass").value.trim();
 
     if(cls===""){
-
         alert("Please enter class.");
-
         return;
     }
 
@@ -1287,13 +1137,8 @@ function loadTimetable(){
 
     var html=
         "<div class='form-box'>"+
-
-        "<h3>📅 Class "+
-        safe(cls)+
-        " Time Table</h3>"+
-
+        "<h3>📅 Class "+safe(cls)+" Time Table</h3>"+
         "<table>"+
-
         "<tr>"+
         "<th>Day</th>"+
         "<th>Subject</th>"+
@@ -1304,58 +1149,34 @@ function loadTimetable(){
 
         html+=
             "<tr>"+
-
+            "<td>"+safe(data[i].day)+"</td>"+
             "<td>"+
-            safe(data[i].day)+
+            "<input class='tt-input' id='ttSubject"+i+"' value='"+safeAttr(data[i].subject)+"' placeholder='Subject'>"+
             "</td>"+
-
             "<td>"+
-            "<input class='tt-input' "+
-            "id='ttSubject"+i+"' "+
-            "value='"+safeAttr(data[i].subject)+"' "+
-            "placeholder='Subject'>"+
+            "<input class='tt-input' id='ttTime"+i+"' value='"+safeAttr(data[i].time)+"' placeholder='Time'>"+
             "</td>"+
-
-            "<td>"+
-            "<input class='tt-input' "+
-            "id='ttTime"+i+"' "+
-            "value='"+safeAttr(data[i].time)+"' "+
-            "placeholder='Time'>"+
-            "</td>"+
-
             "</tr>";
     }
 
     html+=
-        "</table>"+
-
-        "<br>"+
-
-        "<button class='success' onclick='saveTimetable()'>"+
-        "💾 Save Time Table"+
-        "</button>"+
-
+        "</table><br>"+
+        "<button class='success' onclick='saveTimetable()'>💾 Save Time Table</button>"+
         "<div id='ttMessage' class='message'></div>"+
-
         "</div>";
 
     document.getElementById("ttArea").innerHTML=html;
 }
 
 
-/* =========================
-   SAVE TIMETABLE
-   ========================= */
+/* SAVE TIMETABLE */
 
 function saveTimetable(){
 
-    var cls=
-        document.getElementById("ttClass").value.trim();
+    var cls=document.getElementById("ttClass").value.trim();
 
     if(cls===""){
-
         alert("Please enter class.");
-
         return;
     }
 
@@ -1364,19 +1185,9 @@ function saveTimetable(){
     for(var i=0;i<days.length;i++){
 
         data.push({
-
             day:days[i],
-
-            subject:
-                document.getElementById(
-                    "ttSubject"+i
-                ).value.trim(),
-
-            time:
-                document.getElementById(
-                    "ttTime"+i
-                ).value.trim()
-
+            subject:document.getElementById("ttSubject"+i).value.trim(),
+            time:document.getElementById("ttTime"+i).value.trim()
         });
     }
 
@@ -1392,52 +1203,32 @@ function saveTimetable(){
 }
 
 
-/* =========================
-   REPORTS
-   ========================= */
+/* REPORTS */
 
 function updateReports(){
 
     var students=getStudents();
 
-    var box=
-        document.getElementById(
-            "reportStudents"
-        );
+    var box=document.getElementById("reportStudents");
 
     if(box){
-
-        box.textContent=
-            "Total Students: "+
-            students.length;
+        box.textContent="Total Students: "+students.length;
     }
 }
 
 
-/* =========================
-   SETTINGS
-   ========================= */
+/* SETTINGS */
 
 function saveSettings(){
 
-    var name=
-        document.getElementById(
-            "schoolName"
-        ).value.trim();
+    var name=document.getElementById("schoolName").value.trim();
 
     if(name===""){
-
-        alert(
-            "Please enter school name."
-        );
-
+        alert("Please enter school name.");
         return;
     }
 
-    localStorage.setItem(
-        "moonStarSchoolName",
-        name
-    );
+    localStorage.setItem("moonStarSchoolName",name);
 
     showMessage(
         "settingsMessage",
@@ -1445,20 +1236,13 @@ function saveSettings(){
     );
 }
 
-
 function loadSettings(){
 
-    var name=
-        localStorage.getItem(
-            "moonStarSchoolName"
-        );
+    var name=localStorage.getItem("moonStarSchoolName");
 
     if(name){
 
-        var input=
-            document.getElementById(
-                "schoolName"
-            );
+        var input=document.getElementById("schoolName");
 
         if(input){
             input.value=name;
@@ -1467,62 +1251,42 @@ function loadSettings(){
 }
 
 
-/* =========================
-   RESULTS
-   ========================= */
+/* RESULTS */
 
 function showResultMessage(){
 
-    var box=
-        document.getElementById(
-            "resultMessage"
-        );
+    var box=document.getElementById("resultMessage");
 
     box.style.display="block";
 }
 
 
-/* =========================
-   MESSAGE
-   ========================= */
+/* MESSAGE */
 
 function showMessage(id,text){
 
-    var box=
-        document.getElementById(id);
+    var box=document.getElementById(id);
 
-    if(!box){
-        return;
-    }
+    if(!box) return;
 
     box.textContent=text;
-
     box.style.display="block";
 
     setTimeout(function(){
-
         box.style.display="none";
-
     },3000);
 }
 
 
-/* =========================
-   SECURITY
-   ========================= */
+/* SECURITY */
 
 function safe(value){
 
-    if(
-        value===null ||
-        value===undefined
-    ){
-
+    if(value===null || value===undefined){
         return "";
     }
 
     return String(value)
-
         .replace(/&/g,"&amp;")
         .replace(/</g,"&lt;")
         .replace(/>/g,"&gt;")
@@ -1530,16 +1294,12 @@ function safe(value){
         .replace(/'/g,"&#039;");
 }
 
-
 function safeAttr(value){
-
     return safe(value);
 }
 
 
-/* =========================
-   START
-   ========================= */
+/* START */
 
 loadSettings();
 showStudents();
