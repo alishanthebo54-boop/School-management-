@@ -159,76 +159,174 @@ th{
     margin:0;
 }
 
-/* =========================
-   FINAL SLIP / TIME TABLE
-   ========================= */
 
-.print-sheet{
-    display:none;
-}
+/* =====================================================
+   FINAL A4 SLIP CARD + TIME TABLE DESIGN
+   ===================================================== */
 
-.final-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8mm;
+#slipArea{
     margin-top:20px;
 }
 
-.final-slip,
-.final-tt{
-    border:2px solid #1d4ed8;
-    border-radius:10px;
-    overflow:hidden;
-    background:white;
-    break-inside:avoid;
+.a4-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8mm;
+    align-items:start;
 }
 
-.final-head{
-    background:#1d4ed8;
+.a4-column{
+    display:flex;
+    flex-direction:column;
+    gap:7mm;
+}
+
+.final-slip{
+    border:3px solid #1d4ed8;
+    border-radius:12px;
+    overflow:hidden;
+    background:linear-gradient(180deg,#eff6ff,#ffffff);
+    box-shadow:0 3px 8px rgba(30,64,175,.18);
+    break-inside:avoid;
+    page-break-inside:avoid;
+}
+
+.final-tt{
+    border:3px solid #1d4ed8;
+    border-radius:12px;
+    overflow:hidden;
+    background:linear-gradient(180deg,#eff6ff,#ffffff);
+    box-shadow:0 3px 8px rgba(30,64,175,.18);
+    break-inside:avoid;
+    page-break-inside:avoid;
+}
+
+.final-blue-head{
+    background:linear-gradient(135deg,#1d4ed8,#2563eb);
     color:white;
     text-align:center;
-    padding:8px;
+    padding:9px 6px;
     font-weight:bold;
+    font-size:14px;
 }
 
-.final-yellow{
+.final-school{
     background:#facc15;
     color:#111827;
-    padding:7px 8px;
-    font-weight:bold;
     text-align:center;
+    font-weight:bold;
+    padding:8px 5px;
+    font-size:12px;
+    border-bottom:2px solid #1d4ed8;
 }
 
-.final-body{
-    padding:10px;
+.final-yellow-title{
+    background:#fde68a;
+    color:#111827;
+    text-align:center;
+    font-weight:bold;
+    padding:6px;
     font-size:12px;
 }
 
-.final-body p{
-    margin:6px 0;
+.slip-content{
+    padding:9px;
+}
+
+.student-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border:1px solid #93c5fd;
+    border-radius:6px;
+    margin:5px 0;
+    background:white;
+    overflow:hidden;
+}
+
+.student-label{
+    background:#dbeafe;
+    color:#1e3a8a;
+    font-weight:bold;
+    padding:6px;
+    min-width:88px;
+}
+
+.student-value{
+    padding:6px;
+    flex:1;
+    text-align:center;
+    font-weight:bold;
+}
+
+.seat-box{
+    border:2px solid #1d4ed8;
+    background:#fef08a;
+    border-radius:8px;
+    text-align:center;
+    margin-top:8px;
+    padding:7px;
+}
+
+.seat-title{
+    font-size:10px;
+    font-weight:bold;
+    color:#1e3a8a;
+}
+
+.seat-number{
+    font-size:18px;
+    font-weight:bold;
+    color:#111827;
+}
+
+.final-tt .tt-title{
+    background:#facc15;
+    color:#111827;
+    text-align:center;
+    padding:6px;
+    font-size:12px;
+    font-weight:bold;
 }
 
 .final-tt table{
     margin:0;
-    font-size:10px;
+    width:100%;
+    font-size:9px;
+    background:white;
 }
 
 .final-tt th{
-    background:#facc15;
-    color:#111827;
+    background:#2563eb;
+    color:white;
+    border:1px solid #1d4ed8;
+    padding:5px 3px;
 }
 
 .final-tt td{
-    padding:4px;
+    border:1px solid #93c5fd;
+    padding:5px 3px;
 }
 
-/* =========================
+.final-tt tr:nth-child(even) td{
+    background:#eff6ff;
+}
+
+.print-note{
+    text-align:center;
+    color:#64748b;
+    font-size:11px;
+    padding:5px;
+}
+
+
+/* =====================================================
    PRINT
-   ========================= */
+   ===================================================== */
 
 @page{
     size:A4 portrait;
-    margin:7mm;
+    margin:6mm;
 }
 
 @media print{
@@ -280,16 +378,52 @@ th{
     }
 
     #slipArea{
+        display:block!important;
+        width:100%!important;
+        margin:0!important;
+    }
+
+    .a4-layout{
         display:grid!important;
         grid-template-columns:1fr 1fr!important;
         gap:5mm!important;
-        margin:0!important;
+        width:100%!important;
+        align-items:start!important;
+    }
+
+    .a4-column{
+        display:flex!important;
+        flex-direction:column!important;
+        gap:5mm!important;
     }
 
     .final-slip,
     .final-tt{
+        box-shadow:none!important;
         break-inside:avoid!important;
         page-break-inside:avoid!important;
+    }
+
+    .final-blue-head{
+        -webkit-print-color-adjust:exact!important;
+        print-color-adjust:exact!important;
+    }
+
+    .final-school,
+    .final-yellow-title,
+    .seat-box,
+    .final-tt th,
+    .final-tt td{
+        -webkit-print-color-adjust:exact!important;
+        print-color-adjust:exact!important;
+    }
+
+    .final-slip{
+        min-height:55mm;
+    }
+
+    .final-tt{
+        min-height:55mm;
     }
 }
 </style>
@@ -438,7 +572,7 @@ Settings
 
 </div>
 
-<div id="slipArea" class="final-grid"></div>
+<div id="slipArea"></div>
 
 </div>
 
@@ -950,7 +1084,7 @@ function getTimetable(cls){
 
 
 /* =========================
-   FINAL SLIP DESIGN
+   FINAL SLIP + TIMETABLE
    ========================= */
 
 function makeSlips(){
@@ -978,105 +1112,151 @@ function makeSlips(){
 
     if(list.length===0){
 
-        area.innerHTML=
-            "<p>No students found.</p>";
+        area.innerHTML="<p>No students found.</p>";
 
         return;
     }
 
+    /*
+       Final page:
+       LEFT  = 4 Slip Cards
+       RIGHT = 4 Time Tables
+    */
+
+    var printCount=Math.min(list.length,4);
+
     var timetable=getTimetable(cls);
 
-    var html="";
+    var leftHTML="";
+    var rightHTML="";
 
-    for(var i=0;i<list.length;i++){
+    for(var i=0;i<printCount;i++){
 
         var s=list[i];
 
-        /*
-          Every student gets:
-          LEFT = Slip Card
-          RIGHT = Time Table
-        */
+        /* =========================
+           SLIP CARD
+           ========================= */
 
-        html+=
+        leftHTML+=
         "<div class='final-slip'>"+
 
-            "<div class='final-head'>"+
+            "<div class='final-blue-head'>"+
                 "🎫 SLIP CARD"+
             "</div>"+
 
-            "<div class='final-yellow'>"+
+            "<div class='final-school'>"+
                 "Moon Star Public High School Khanwahan"+
             "</div>"+
 
-            "<div class='final-body'>"+
+            "<div class='final-yellow-title'>"+
+                "STUDENT EXAM / SLIP CARD"+
+            "</div>"+
 
-                "<p><b>Student:</b> "+
-                safe(s.name)+
-                "</p>"+
+            "<div class='slip-content'>"+
 
-                "<p><b>Father:</b> "+
-                safe(s.father)+
-                "</p>"+
+                "<div class='student-row'>"+
+                    "<div class='student-label'>Student</div>"+
+                    "<div class='student-value'>"+
+                        safe(s.name)+
+                    "</div>"+
+                "</div>"+
 
-                "<p><b>Class:</b> "+
-                safe(s.className)+
-                "</p>"+
+                "<div class='student-row'>"+
+                    "<div class='student-label'>Father</div>"+
+                    "<div class='student-value'>"+
+                        safe(s.father)+
+                    "</div>"+
+                "</div>"+
 
-                "<p><b>Seat Number:</b> "+
-                safe(s.seat || "-")+
-                "</p>"+
+                "<div class='student-row'>"+
+                    "<div class='student-label'>Class</div>"+
+                    "<div class='student-value'>"+
+                        safe(s.className)+
+                    "</div>"+
+                "</div>"+
+
+                "<div class='seat-box'>"+
+                    "<div class='seat-title'>SEAT NUMBER</div>"+
+                    "<div class='seat-number'>"+
+                        safe(s.seat || "-")+
+                    "</div>"+
+                "</div>"+
 
             "</div>"+
 
-        "</div>"+
+        "</div>";
+    }
 
 
+    /* =========================
+       TIME TABLES
+       ========================= */
+
+    for(var t=0;t<printCount;t++){
+
+        rightHTML+=
         "<div class='final-tt'>"+
 
-            "<div class='final-head'>"+
+            "<div class='final-blue-head'>"+
                 "📅 TIME TABLE"+
             "</div>"+
 
-            "<div class='final-yellow'>"+
+            "<div class='tt-title'>"+
                 "Class: "+safe(cls)+
             "</div>"+
 
             "<table>"+
 
-            "<tr>"+
-            "<th>Day</th>"+
-            "<th>Subject</th>"+
-            "<th>Time</th>"+
-            "</tr>";
+                "<tr>"+
+                    "<th>Day</th>"+
+                    "<th>Subject</th>"+
+                    "<th>Time</th>"+
+                "</tr>";
 
         for(var d=0;d<timetable.length;d++){
 
-            html+=
+            rightHTML+=
                 "<tr>"+
 
-                "<td>"+
-                safe(timetable[d].day)+
-                "</td>"+
+                    "<td>"+
+                        safe(timetable[d].day)+
+                    "</td>"+
 
-                "<td>"+
-                safe(timetable[d].subject || "-")+
-                "</td>"+
+                    "<td>"+
+                        safe(timetable[d].subject || "-")+
+                    "</td>"+
 
-                "<td>"+
-                safe(timetable[d].time || "-")+
-                "</td>"+
+                    "<td>"+
+                        safe(timetable[d].time || "-")+
+                    "</td>"+
 
                 "</tr>";
         }
 
-        html+=
+        rightHTML+=
             "</table>"+
+
+            "<div class='print-note'>"+
+                "Moon Star Public High School"+
+            "</div>"+
 
         "</div>";
     }
 
-    area.innerHTML=html;
+
+    area.innerHTML=
+        "<div class='a4-layout'>"+
+
+            "<div class='a4-column'>"+
+                leftHTML+
+            "</div>"+
+
+            "<div class='a4-column'>"+
+                rightHTML+
+            "</div>"+
+
+        "</div>";
 }
 
 
