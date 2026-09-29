@@ -1,1094 +1,1389 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>Moon Star Public High School Khanwahan</title>  <style>  
-*{box-sizing:border-box}  
-  
-body{  
-margin:0;  
-font-family:Arial,sans-serif;  
-background:#f1f5f9;  
-color:#1e293b;  
-}  
-  
-header{  
-background:linear-gradient(135deg,#1d4ed8,#2563eb);  
-color:white;  
-padding:22px 15px;  
-text-align:center;  
-}  
-  
-header h1{margin:0;font-size:23px}  
-header p{margin:7px 0 0}  
-  
-.container{  
-max-width:1000px;  
-margin:auto;  
-padding:20px;  
-}  
-  
-.section{  
-display:none;  
-background:white;  
-border-radius:15px;  
-padding:20px;  
-box-shadow:0 4px 12px rgba(0,0,0,.08);  
-}  
-  
-.section.active{display:block}  
-  
-.dashboard{  
-display:grid;  
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));  
-gap:15px;  
-}  
-  
-.menu-card{  
-background:white;  
-border-radius:15px;  
-padding:25px 10px;  
-text-align:center;  
-box-shadow:0 4px 12px rgba(0,0,0,.08);  
-cursor:pointer;  
-font-weight:bold;  
-}  
-  
-.icon{  
-font-size:38px;  
-margin-bottom:10px;  
-}  
-  
-h2{  
-color:#1d4ed8;  
-margin-top:0;  
-}  
-  
-button{  
-border:0;  
-border-radius:8px;  
-padding:10px 15px;  
-cursor:pointer;  
-font-size:14px;  
-}  
-  
-.back{  
-background:#64748b;  
-color:white;  
-margin-bottom:15px;  
-}  
-  
-.primary{  
-background:#2563eb;  
-color:white;  
-}  
-  
-.success{  
-background:#16a34a;  
-color:white;  
-}  
-  
-.danger{  
-background:#dc2626;  
-color:white;  
-}  
-  
-.form-box{  
-background:#f8fafc;  
-padding:15px;  
-border-radius:12px;  
-margin-bottom:20px;  
-}  
-  
-input,select{  
-width:100%;  
-padding:11px;  
-margin:6px 0 12px;  
-border:1px solid #cbd5e1;  
-border-radius:8px;  
-font-size:15px;  
-}  
-  
-table{  
-width:100%;  
-border-collapse:collapse;  
-margin-top:15px;  
-}  
-  
-th,td{  
-border:1px solid #cbd5e1;  
-padding:8px;  
-text-align:center;  
-}  
-  
-th{  
-background:#e2e8f0;  
-}  
-  
-.message{  
-display:none;  
-margin-top:10px;  
-padding:10px;  
-border-radius:8px;  
-background:#dcfce7;  
-color:#166534;  
-}  
-  
-.report-card{  
-border:1px solid #cbd5e1;  
-border-radius:12px;  
-padding:15px;  
-margin-top:15px;  
-}  
-  
-.slip-area{  
-margin-top:20px;  
-}  
-  
-.slip{  
-border:2px solid #2563eb;  
-border-radius:10px;  
-padding:12px;  
-margin-bottom:15px;  
-page-break-inside:avoid;  
-break-inside:avoid;  
-}  
-  
-.slip h3{  
-margin:0 0 8px;  
-color:#1d4ed8;  
-}  
-  
-.slip p{  
-margin:5px 0;  
-}  
-  
-.tt-input{  
-width:100%;  
-padding:7px;  
-margin:0;  
-}  
-  
-.small-btn{  
-padding:6px 9px;  
-font-size:12px;  
-}  
-  
-@page{  
-size:A4 portrait;  
-margin:8mm;  
-}  
-  
-@media print{  
-  
-html,body{  
-width:210mm;  
-min-height:297mm;  
-margin:0!important;  
-padding:0!important;  
-background:white!important;  
-}  
-  
-body *{  
-visibility:hidden;  
-}  
-  
-#slipCard,  
-#slipCard *{  
-visibility:visible;  
-}  
-  
-header,  
-.no-print,  
-.back{  
-display:none!important;  
-}  
-  
-.container{  
-width:100%!important;  
-max-width:none!important;  
-margin:0!important;  
-padding:0!important;  
-}  
-  
-.section{  
-display:none!important;  
-box-shadow:none!important;  
-border-radius:0!important;  
-padding:0!important;  
-margin:0!important;  
-}  
-  
-#slipCard{  
-display:block!important;  
-visibility:visible!important;  
-}  
-  
-#slipCard h2{  
-display:none!important;  
-}  
-  
-.slip-area{  
-display:grid!important;  
-grid-template-columns:1fr 1fr;  
-gap:8mm;  
-width:100%;  
-margin:0!important;  
-}  
-  
-.slip{  
-width:100%;  
-margin:0!important;  
-padding:5mm;  
-border:2px solid #2563eb;  
-border-radius:4mm;  
-page-break-inside:avoid!important;  
-break-inside:avoid!important;  
-}  
-  
-.slip h3{  
-font-size:13px;  
-text-align:center;  
-}  
-  
-.slip p{  
-font-size:11px;  
-}  
-  
-.slip table{  
-font-size:9px;  
-}  
-  
-.slip th,.slip td{  
-padding:2mm;  
-}  
-}  
-</style>  </head>  <body>  <header>  
-<h1>🏫 Moon Star Public High School Khanwahan</h1>  
-<p>School Management System</p>  
-</header>  <div class="container">  <!-- DASHBOARD -->  <div id="dashboard" class="section active">  <div class="dashboard">  <div class="menu-card" onclick="openPage('students')">  
-<div class="icon">👨‍🎓</div>  
-Students  
-</div>  <div class="menu-card" onclick="openPage('seat')">  
-<div class="icon">🪑</div>  
-Seat Allotment  
-</div>  <div class="menu-card" onclick="openPage('slipCard')">  
-<div class="icon">🎫</div>  
-Slip Card  
-</div>  <div class="menu-card" onclick="openPage('timetable')">  
-<div class="icon">📅</div>  
-Time Table  
-</div>  <div class="menu-card" onclick="openPage('results')">  
-<div class="icon">📝</div>  
-Results  
-</div>  <div class="menu-card" onclick="openPage('reports')">  
-<div class="icon">📊</div>  
-Reports  
-</div>  <div class="menu-card" onclick="openPage('settings')">  
-<div class="icon">⚙️</div>  
-Settings  
-</div>  </div>  
-</div>  <!-- STUDENTS -->  <div id="students" class="section">  <button class="back" onclick="openPage('dashboard')">⬅ Back</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Moon Star Public High School Khanwahan</title>
 
-<h2>👨‍🎓 Students</h2>  <div class="form-box">  <label>Student Name</label>
-<input id="studentName" type="text" placeholder="Student name">
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f1f5f9;
+    color:#1e293b;
+}
+
+header{
+    background:linear-gradient(135deg,#1d4ed8,#2563eb);
+    color:white;
+    padding:22px 15px;
+    text-align:center;
+}
+
+header h1{margin:0;font-size:23px}
+header p{margin:7px 0 0}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+}
+
+.section{
+    display:none;
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.section.active{display:block}
+
+.dashboard{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:15px;
+}
+
+.menu-card{
+    background:white;
+    border-radius:15px;
+    padding:25px 10px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.menu-card:active{
+    transform:scale(.97);
+}
+
+.icon{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+h2{
+    color:#1d4ed8;
+    margin-top:0;
+}
+
+button{
+    border:0;
+    border-radius:8px;
+    padding:10px 15px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.back{
+    background:#64748b;
+    color:white;
+    margin-bottom:15px;
+}
+
+.primary{
+    background:#2563eb;
+    color:white;
+}
+
+.success{
+    background:#16a34a;
+    color:white;
+}
+
+.danger{
+    background:#dc2626;
+    color:white;
+}
+
+.form-box{
+    background:#f8fafc;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+input,select{
+    width:100%;
+    padding:11px;
+    margin:6px 0 12px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    font-size:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th,td{
+    border:1px solid #cbd5e1;
+    padding:8px;
+    text-align:center;
+}
+
+th{
+    background:#e2e8f0;
+}
+
+.message{
+    display:none;
+    margin-top:10px;
+    padding:10px;
+    border-radius:8px;
+    background:#dcfce7;
+    color:#166534;
+}
+
+.report-card{
+    border:1px solid #cbd5e1;
+    border-radius:12px;
+    padding:15px;
+    margin-top:15px;
+}
+
+.small-btn{
+    padding:6px 9px;
+    font-size:12px;
+}
+
+.tt-input{
+    width:100%;
+    padding:7px;
+    margin:0;
+}
+
+/* =========================
+   FINAL SLIP / TIME TABLE
+   ========================= */
+
+.print-sheet{
+    display:none;
+}
+
+.final-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8mm;
+    margin-top:20px;
+}
+
+.final-slip,
+.final-tt{
+    border:2px solid #1d4ed8;
+    border-radius:10px;
+    overflow:hidden;
+    background:white;
+    break-inside:avoid;
+}
+
+.final-head{
+    background:#1d4ed8;
+    color:white;
+    text-align:center;
+    padding:8px;
+    font-weight:bold;
+}
+
+.final-yellow{
+    background:#facc15;
+    color:#111827;
+    padding:7px 8px;
+    font-weight:bold;
+    text-align:center;
+}
+
+.final-body{
+    padding:10px;
+    font-size:12px;
+}
+
+.final-body p{
+    margin:6px 0;
+}
+
+.final-tt table{
+    margin:0;
+    font-size:10px;
+}
+
+.final-tt th{
+    background:#facc15;
+    color:#111827;
+}
+
+.final-tt td{
+    padding:4px;
+}
+
+/* =========================
+   PRINT
+   ========================= */
+
+@page{
+    size:A4 portrait;
+    margin:7mm;
+}
+
+@media print{
+
+    html,body{
+        width:210mm;
+        min-height:297mm;
+        margin:0!important;
+        padding:0!important;
+        background:white!important;
+    }
+
+    body *{
+        visibility:hidden;
+    }
+
+    header,
+    .no-print{
+        display:none!important;
+    }
+
+    .container{
+        width:100%!important;
+        max-width:none!important;
+        margin:0!important;
+        padding:0!important;
+    }
+
+    .section{
+        display:none!important;
+        box-shadow:none!important;
+        border-radius:0!important;
+        padding:0!important;
+        margin:0!important;
+    }
+
+    #slipCard{
+        display:block!important;
+        visibility:visible!important;
+    }
+
+    #slipCard h2{
+        display:none!important;
+    }
+
+    #slipArea,
+    #slipArea *{
+        visibility:visible!important;
+    }
+
+    #slipArea{
+        display:grid!important;
+        grid-template-columns:1fr 1fr!important;
+        gap:5mm!important;
+        margin:0!important;
+    }
+
+    .final-slip,
+    .final-tt{
+        break-inside:avoid!important;
+        page-break-inside:avoid!important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🏫 Moon Star Public High School Khanwahan</h1>
+    <p>School Management System</p>
+</header>
+
+<div class="container">
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="section active">
+
+<div class="dashboard">
+
+<div class="menu-card" onclick="openPage('students')">
+<div class="icon">👨‍🎓</div>
+Students
+</div>
+
+<div class="menu-card" onclick="openPage('seat')">
+<div class="icon">🪑</div>
+Seat Allotment
+</div>
+
+<div class="menu-card" onclick="openPage('slipCard')">
+<div class="icon">🎫</div>
+Slip Card
+</div>
+
+<div class="menu-card" onclick="openPage('timetable')">
+<div class="icon">📅</div>
+Time Table
+</div>
+
+<div class="menu-card" onclick="openPage('results')">
+<div class="icon">📝</div>
+Results
+</div>
+
+<div class="menu-card" onclick="openPage('reports')">
+<div class="icon">📊</div>
+Reports
+</div>
+
+<div class="menu-card" onclick="openPage('settings')">
+<div class="icon">⚙️</div>
+Settings
+</div>
+
+</div>
+</div>
+
+
+<!-- STUDENTS -->
+<div id="students" class="section">
+
+<button class="back" onclick="openPage('dashboard')">
+⬅ Back
+</button>
+
+<h2>👨‍🎓 Students</h2>
+
+<div class="form-box">
+
+<label>Student Name</label>
+<input id="studentName" placeholder="Student name">
 
 <label>Father Name</label>
-<input id="fatherName" type="text" placeholder="Father name">
+<input id="fatherName" placeholder="Father name">
 
 <label>Class</label>
-<input id="studentClass" type="text" placeholder="Example: V-A">
+<input id="studentClass" placeholder="Example: V-A">
 
-<button class="primary" onclick="addStudent()">  
-➕ Save Student  
-</button>  <div id="studentMessage" class="message"></div>  </div>  <div id="studentList"></div>  </div>  <!-- SEAT -->  <div id="seat" class="section">  <button class="back" onclick="openPage('dashboard')">⬅ Back</button>
+<button class="primary" onclick="addStudent()">
+➕ Save Student
+</button>
 
-<h2>🪑 Seat Allotment</h2>  <div class="form-box">  <label>Class</label>
-<input id="seatClass" type="text" placeholder="Example: V-A">
+<div id="studentMessage" class="message"></div>
+
+</div>
+
+<div id="studentList"></div>
+
+</div>
+
+
+<!-- SEAT -->
+<div id="seat" class="section">
+
+<button class="back" onclick="openPage('dashboard')">
+⬅ Back
+</button>
+
+<h2>🪑 Seat Allotment</h2>
+
+<div class="form-box">
+
+<label>Class</label>
+<input id="seatClass" placeholder="Example: V-A">
 
 <label>Starting Seat Number</label>
 <input id="startSeat" type="number" value="1">
 
-<button class="primary" onclick="allotSeats()">  
-🪑 Allot Seats  
-</button>  <div id="seatMessage" class="message"></div>  </div>  <div id="seatList"></div>  </div>  <!-- SLIP CARD -->  <div id="slipCard" class="section">  <button class="back no-print" onclick="openPage('dashboard')">  
-⬅ Back  
-</button>  <h2>🎫 Slip Card</h2>  <div class="form-box no-print">  <label>Select Class</label>
+<button class="primary" onclick="allotSeats()">
+🪑 Allot Seats
+</button>
 
-<select id="slipClass">  
-<option value="">Select Class</option>  
-</select>  <button class="primary" onclick="makeSlips()">  
-🎫 Generate Slip Cards  
-</button>  <button class="success" onclick="printSlips()">  
-🖨 Print / Save PDF  
-</button>  </div>  <div id="slipArea" class="slip-area"></div>  </div>  <!-- TIME TABLE -->  <div id="timetable" class="section">  <button class="back" onclick="openPage('dashboard')">  
-⬅ Back  
-</button>  <h2>📅 Time Table</h2>  <div class="form-box">  <label>Class</label>
+<div id="seatMessage" class="message"></div>
 
-<input id="ttClass" type="text" placeholder="Example: V-A">  <button class="primary" onclick="loadTimetable()">  
-📂 Load Time Table  
-</button>  </div>  <div id="ttArea"></div>  </div>  <!-- RESULTS -->  <div id="results" class="section">  <button class="back" onclick="openPage('dashboard')">  
-⬅ Back  
-</button>  <h2>📝 Results</h2>  <div class="form-box">  <p>Result section is ready.</p>  <button class="primary" onclick="showResultMessage()">  
-➕ Add Result  
-</button>  <div id="resultMessage" class="message">  
-Result entry section is ready.  
-</div>  </div>  </div>  <!-- REPORTS -->  <div id="reports" class="section">  <button class="back" onclick="openPage('dashboard')">  
-⬅ Back  
-</button>  <h2>📊 Reports</h2>  <div class="report-card">  <h3>👨‍🎓 Student Report</h3>  <p id="reportStudents">  
-Total Students: 0  
-</p>  </div>  <div class="report-card">  <h3>🪑 Seat Report</h3>  <p>  
-Seat numbers are managed from Seat Allotment.  
-</p>  </div>  </div>  <!-- SETTINGS -->  <div id="settings" class="section">  <button class="back" onclick="openPage('dashboard')">  
-⬅ Back  
-</button>  <h2>⚙️ Settings</h2>  <div class="form-box">  <label>School Name</label>
+</div>
+
+<div id="seatList"></div>
+
+</div>
+
+
+<!-- SLIP CARD -->
+<div id="slipCard" class="section">
+
+<button class="back no-print" onclick="openPage('dashboard')">
+⬅ Back
+</button>
+
+<h2>🎫 Slip Card</h2>
+
+<div class="form-box no-print">
+
+<label>Select Class</label>
+
+<select id="slipClass">
+<option value="">Select Class</option>
+</select>
+
+<button class="primary" onclick="makeSlips()">
+🎫 Generate Slip Cards
+</button>
+
+<button class="success" onclick="printSlips()">
+🖨 Print / Save PDF
+</button>
+
+</div>
+
+<div id="slipArea" class="final-grid"></div>
+
+</div>
+
+
+<!-- TIME TABLE -->
+<div id="timetable" class="section">
+
+<button class="back" onclick="openPage('dashboard')">
+⬅ Back
+</button>
+
+<h2>📅 Time Table</h2>
+
+<div class="form-box">
+
+<label>Class</label>
+
+<input
+id="ttClass"
+placeholder="Example: V-A"
+>
+
+<button class="primary" onclick="loadTimetable()">
+📂 Load Time Table
+</button>
+
+</div>
+
+<div id="ttArea"></div>
+
+</div>
+
+
+<!-- RESULTS -->
+<div id="results" class="section">
+
+<button class="back" onclick="openPage('dashboard')">
+⬅ Back
+</button>
+
+<h2>📝 Results</h2>
+
+<div class="form-box">
+
+<p>Result section is ready.</p>
+
+<button class="primary" onclick="showResultMessage()">
+➕ Add Result
+</button>
+
+<div id="resultMessage" class="message">
+Result entry section is ready.
+</div>
+
+</div>
+
+</div>
+
+
+<!-- REPORTS -->
+<div id="reports" class="section">
+
+<button class="back" onclick="openPage('dashboard')">
+⬅ Back
+</button>
+
+<h2>📊 Reports</h2>
+
+<div class="report-card">
+
+<h3>👨‍🎓 Student Report</h3>
+
+<p id="reportStudents">
+Total Students: 0
+</p>
+
+</div>
+
+<div class="report-card">
+
+<h3>🪑 Seat Report</h3>
+
+<p>
+Seat numbers are managed from Seat Allotment.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- SETTINGS -->
+<div id="settings" class="section">
+
+<button class="back" onclick="openPage('dashboard')">
+⬅ Back
+</button>
+
+<h2>⚙️ Settings</h2>
+
+<div class="form-box">
+
+<label>School Name</label>
 
 <input
 id="schoolName"
 value="Moon Star Public High School Khanwahan"
+>
 
-> 
+<button class="primary" onclick="saveSettings()">
+💾 Save Settings
+</button>
 
-<button class="primary" onclick="saveSettings()">  
-💾 Save Settings  
-</button>  <div id="settingsMessage" class="message"></div>  </div>  </div>  </div>  <script>  
-  
-/* PAGE NAVIGATION */  
-  
-function openPage(page){  
-  
-var sections=document.querySelectorAll(".section");  
-  
-for(var i=0;i<sections.length;i++){  
-sections[i].classList.remove("active");  
-}  
-  
-var selected=document.getElementById(page);  
-  
-if(selected){  
-selected.classList.add("active");  
-}  
-  
-if(page==="students"){  
-showStudents();  
-}  
-  
-if(page==="seat"){  
-showSeatStudents();  
-}  
-  
-if(page==="slipCard"){  
-loadSlipClasses();  
-}  
-  
-if(page==="reports"){  
-updateReports();  
-}  
-  
-}  
-  
-  
-/* STORAGE */  
-  
-function getStudents(){  
-  
-var data=localStorage.getItem("moonStarStudents");  
-  
-if(!data){  
-return [];  
-}  
-  
-try{  
-return JSON.parse(data);  
-}  
-catch(e){  
-return [];  
-}  
-  
-}  
-  
-  
-function saveStudents(data){  
-  
-localStorage.setItem(  
-"moonStarStudents",  
-JSON.stringify(data)  
-);  
-  
-}  
-  
-  
-/* ADD STUDENT */  
-  
-function addStudent(){  
-  
-var name=document.getElementById("studentName").value.trim();  
-  
-var father=document.getElementById("fatherName").value.trim();  
-  
-var cls=document.getElementById("studentClass").value.trim();  
-  
-if(name===""||father===""||cls===""){  
-  
-alert("Please enter Student Name, Father Name and Class.");  
-  
-return;  
-}  
-  
-var students=getStudents();  
-  
-students.push({  
-  
-id:Date.now(),  
-  
-name:name,  
-  
-father:father,  
-  
-className:cls,  
-  
-seat:""  
-  
-});  
-  
-saveStudents(students);  
-  
-document.getElementById("studentName").value="";  
-document.getElementById("fatherName").value="";  
-document.getElementById("studentClass").value="";  
-  
-showMessage(  
-"studentMessage",  
-"Student saved successfully."  
-);  
-  
-showStudents();  
-updateReports();  
-  
-}  
-  
-  
-/* SHOW STUDENTS */  
-  
-function showStudents(){  
-  
-var box=document.getElementById("studentList");  
-  
-if(!box){  
-return;  
-}  
-  
-var students=getStudents();  
-  
-if(students.length===0){  
-  
-box.innerHTML="<p>No students added yet.</p>";  
-  
-return;  
-}  
-  
-var html=  
-"<table>"+  
-"<tr>"+  
-"<th>#</th>"+  
-"<th>Name</th>"+  
-"<th>Father Name</th>"+  
-"<th>Class</th>"+  
-"<th>Seat</th>"+  
-"<th>Action</th>"+  
-"</tr>";  
-  
-for(var i=0;i<students.length;i++){  
-  
-html+=  
-"<tr>"+  
-  
-"<td>"+(i+1)+"</td>"+  
-  
-"<td>"+safe(students[i].name)+"</td>"+  
-  
-"<td>"+safe(students[i].father)+"</td>"+  
-  
-"<td>"+safe(students[i].className)+"</td>"+  
-  
-"<td>"+safe(students[i].seat||"-")+"</td>"+  
-  
-"<td>"+  
-"<button class='danger small-btn' onclick='deleteStudent("+students[i].id+")'>Delete</button>"+  
-"</td>"+  
-  
-"</tr>";  
-  
-}  
-  
-html+="</table>";  
-  
-box.innerHTML=html;  
-  
-}  
-  
-  
-/* DELETE */  
-  
-function deleteStudent(id){  
-  
-if(!confirm("Delete this student?")){  
-return;  
-}  
-  
-var students=getStudents();  
-  
-students=students.filter(function(student){  
-return student.id!==id;  
-});  
-  
-saveStudents(students);  
-  
-showStudents();  
-showSeatStudents();  
-updateReports();  
-  
-}  
-  
-  
-/* SEAT ALLOTMENT */  
-  
-function allotSeats(){  
-  
-var cls=document.getElementById("seatClass").value.trim();  
-  
-var start=parseInt(  
-document.getElementById("startSeat").value,  
-10  
-);  
-  
-if(cls===""){  
-alert("Please enter class.");  
-return;  
-}  
-  
-if(isNaN(start)){  
-alert("Please enter starting seat number.");  
-return;  
-}  
-  
-var students=getStudents();  
-  
-var found=0;  
-  
-for(var i=0;i<students.length;i++){  
-  
-if(  
-String(students[i].className).toLowerCase()===  
-cls.toLowerCase()  
-){  
-  
-students[i].seat=String(start+found);  
-  
-found++;  
-  
-}  
-  
-}  
-  
-if(found===0){  
-  
-alert("No students found in this class.");  
-  
-return;  
-}  
-  
-saveStudents(students);  
-  
-showMessage(  
-"seatMessage",  
-"Seats allotted successfully."  
-);  
-  
-showSeatStudents();  
-showStudents();  
-  
-}  
-  
-  
-/* SHOW SEATS */  
-  
-function showSeatStudents(){  
-  
-var box=document.getElementById("seatList");  
-  
-if(!box){  
-return;  
-}  
-  
-var students=getStudents();  
-  
-if(students.length===0){  
-  
-box.innerHTML="<p>No students available.</p>";  
-  
-return;  
-}  
-  
-var html=  
-"<table>"+  
-"<tr>"+  
-"<th>Name</th>"+  
-"<th>Class</th>"+  
-"<th>Seat Number</th>"+  
-"</tr>";  
-  
-for(var i=0;i<students.length;i++){  
-  
-html+=  
-"<tr>"+  
-"<td>"+safe(students[i].name)+"</td>"+  
-"<td>"+safe(students[i].className)+"</td>"+  
-"<td>"+safe(students[i].seat||"-")+"</td>"+  
-"</tr>";  
-  
-}  
-  
-html+="</table>";  
-  
-box.innerHTML=html;  
-  
-}  
-  
-  
-/* SLIP CLASSES */  
-  
-function loadSlipClasses(){  
-  
-var select=document.getElementById("slipClass");  
-  
-var students=getStudents();  
-  
-var classes=[];  
-  
-for(var i=0;i<students.length;i++){  
-  
-var cls=students[i].className;  
-  
-if(cls && classes.indexOf(cls)===-1){  
-classes.push(cls);  
-}  
-  
-}  
-  
-classes.sort();  
-  
-select.innerHTML=  
-"<option value=''>Select Class</option>";  
-  
-for(var j=0;j<classes.length;j++){  
-  
-var option=document.createElement("option");  
-  
-option.value=classes[j];  
-  
-option.textContent=classes[j];  
-  
-select.appendChild(option);  
-  
-}  
-  
-}  
-  
-  
-/* GENERATE SLIPS */  
-  
-function makeSlips(){  
-  
-var cls=document.getElementById("slipClass").value;  
-  
-var area=document.getElementById("slipArea");  
-  
-if(cls===""){  
-  
-alert("Please select class.");  
-  
-return;  
-}  
-  
-var students=getStudents();  
-  
-var list=students.filter(function(student){  
-  
-return student.className===cls;  
-  
-});  
-  
-if(list.length===0){  
-  
-area.innerHTML="<p>No students found.</p>";  
-  
-return;  
-}  
-  
-var timetable=getTimetable(cls);  
-  
-var html="";  
-  
-for(var i=0;i<list.length;i++){  
-  
-var s=list[i];  
-  
-html+=  
-"<div class='slip'>"+  
-  
-"<h3>Moon Star Public High School Khanwahan</h3>"+  
-  
-"<p><b>Student:</b> "+safe(s.name)+"</p>"+  
-  
-"<p><b>Father:</b> "+safe(s.father)+"</p>"+  
-  
-"<p><b>Class:</b> "+safe(s.className)+"</p>"+  
-  
-"<p><b>Seat Number:</b> "+safe(s.seat||"-")+"</p>"+  
-  
-"<hr>"+  
-  
-"<b>📅 Time Table</b>"+  
-  
-"<table>"+  
-"<tr>"+  
-"<th>Day</th>"+  
-"<th>Subject</th>"+  
-"<th>Time</th>"+  
-"</tr>";  
-  
-for(var d=0;d<timetable.length;d++){  
-  
-if(  
-timetable[d].subject!==""||  
-timetable[d].time!==""  
-){  
-  
-html+=  
-"<tr>"+  
-"<td>"+safe(timetable[d].day)+"</td>"+  
-"<td>"+safe(timetable[d].subject)+"</td>"+  
-"<td>"+safe(timetable[d].time)+"</td>"+  
-"</tr>";  
-  
-}  
-  
-}  
-  
-html+=  
-"</table>"+  
-"</div>";  
-  
-}  
-  
-area.innerHTML=html;  
-  
-}  
-  
-  
-/* PRINT */  
-  
-function printSlips(){  
-  
-var area=document.getElementById("slipArea");  
-  
-if(!area||area.innerHTML.trim()===""){  
-  
-alert("Please generate Slip Cards first.");  
-  
-return;  
-}  
-  
-window.print();  
-  
-}  
-  
-  
-/* TIMETABLE */  
-  
-var days=[  
-"Monday",  
-"Tuesday",  
-"Wednesday",  
-"Thursday",  
-"Friday",  
-"Saturday"  
-];  
-  
-  
-function getTimetable(cls){  
-  
-var saved=localStorage.getItem("moonStarTT_"+cls);  
-  
-if(saved){  
-  
-try{  
-return JSON.parse(saved);  
-}  
-catch(e){}  
-  
-}  
-  
-var data=[];  
-  
-for(var i=0;i<days.length;i++){  
-  
-data.push({  
-day:days[i],  
-subject:"",  
-time:""  
-});  
-  
-}  
-  
-return data;  
-  
-}  
-  
-  
-/* LOAD TIMETABLE */  
-  
-function loadTimetable(){  
-  
-var cls=document.getElementById("ttClass").value.trim();  
-  
-if(cls===""){  
-  
-alert("Please enter class.");  
-  
-return;  
-}  
-  
-var data=getTimetable(cls);  
-  
-var html=  
-"<div class='form-box'>"+  
-"<h3>📅 Class "+safe(cls)+" Time Table</h3>"+  
-"<table>"+  
-"<tr>"+  
-"<th>Day</th>"+  
-"<th>Subject</th>"+  
-"<th>Time</th>"+  
-"</tr>";  
-  
-for(var i=0;i<data.length;i++){  
-  
-html+=  
-"<tr>"+  
-  
-"<td>"+safe(data[i].day)+"</td>"+  
-  
-"<td>"+  
-"<input class='tt-input' id='ttSubject"+i+"' value='"+safeAttr(data[i].subject)+"' placeholder='Subject'>"+  
-"</td>"+  
-  
-"<td>"+  
-"<input class='tt-input' id='ttTime"+i+"' value='"+safeAttr(data[i].time)+"' placeholder='Time'>"+  
-"</td>"+  
-  
-"</tr>";  
-  
-}  
-  
-html+=  
-"</table>"+  
-  
-"<br>"+  
-  
-"<button class='success' onclick='saveTimetable()'>"+  
-"💾 Save Time Table"+  
-"</button>"+  
-  
-"<div id='ttMessage' class='message'></div>"+  
-  
-"</div>";  
-  
-document.getElementById("ttArea").innerHTML=html;  
-  
-}  
-  
-  
-/* SAVE TIMETABLE */  
-  
-function saveTimetable(){  
-  
-var cls=document.getElementById("ttClass").value.trim();  
-  
-if(cls===""){  
-  
-alert("Please enter class.");  
-  
-return;  
-}  
-  
-var data=[];  
-  
-for(var i=0;i<days.length;i++){  
-  
-data.push({  
-  
-day:days[i],  
-  
-subject:document.getElementById(  
-"ttSubject"+i  
-).value.trim(),  
-  
-time:document.getElementById(  
-"ttTime"+i  
-).value.trim()  
-  
-});  
-  
-}  
-  
-localStorage.setItem(  
-"moonStarTT_"+cls,  
-JSON.stringify(data)  
-);  
-  
-showMessage(  
-"ttMessage",  
-"Time Table saved successfully."  
-);  
-  
-}  
-  
-  
-/* REPORTS */  
-  
-function updateReports(){  
-  
-var students=getStudents();  
-  
-var box=document.getElementById("reportStudents");  
-  
-if(box){  
-  
-box.textContent=  
-"Total Students: "+students.length;  
-  
-}  
-  
-}  
-  
-  
-/* SETTINGS */  
-  
-function saveSettings(){  
-  
-var name=document.getElementById("schoolName").value.trim();  
-  
-if(name===""){  
-  
-alert("Please enter school name.");  
-  
-return;  
-}  
-  
-localStorage.setItem(  
-"moonStarSchoolName",  
-name  
-);  
-  
-showMessage(  
-"settingsMessage",  
-"Settings saved successfully."  
-);  
-  
-}  
-  
-  
-function loadSettings(){  
-  
-var name=localStorage.getItem(  
-"moonStarSchoolName"  
-);  
-  
-if(name){  
-  
-var input=document.getElementById("schoolName");  
-  
-if(input){  
-input.value=name;  
-}  
-  
-}  
-  
-}  
-  
-  
-/* RESULTS */  
-  
-function showResultMessage(){  
-  
-var box=document.getElementById(  
-"resultMessage"  
-);  
-  
-box.style.display="block";  
-  
-}  
-  
-  
-/* MESSAGE */  
-  
-function showMessage(id,text){  
-  
-var box=document.getElementById(id);  
-  
-if(!box){  
-return;  
-}  
-  
-box.textContent=text;  
-  
-box.style.display="block";  
-  
-setTimeout(function(){  
-  
-box.style.display="none";  
-  
-},3000);  
-  
-}  
-  
-  
-/* SECURITY */  
-  
-function safe(value){  
-  
-if(  
-value===null||  
-value===undefined  
-){  
-  
-return "";  
-  
-}  
-  
-return String(value)  
-.replace(/&/g,"&amp;")  
-.replace(/</g,"&lt;")  
-.replace(/>/g,"&gt;")  
-.replace(/"/g,"&quot;")  
-.replace(/'/g,"&#039;");  
-  
-}  
-  
-  
-function safeAttr(value){  
-  
-return safe(value);  
-  
-}  
-  
-  
-/* START */  
-  
-loadSettings();  
-showStudents();  
-updateReports();  
-  
-</script>  </body>  
+<div id="settingsMessage" class="message"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   NAVIGATION
+   ========================= */
+
+function openPage(page){
+
+    var sections=document.querySelectorAll(".section");
+
+    for(var i=0;i<sections.length;i++){
+        sections[i].classList.remove("active");
+    }
+
+    var selected=document.getElementById(page);
+
+    if(selected){
+        selected.classList.add("active");
+    }
+
+    if(page==="students"){
+        showStudents();
+    }
+
+    if(page==="seat"){
+        showSeatStudents();
+    }
+
+    if(page==="slipCard"){
+        loadSlipClasses();
+    }
+
+    if(page==="reports"){
+        updateReports();
+    }
+}
+
+
+/* =========================
+   STORAGE
+   ========================= */
+
+function getStudents(){
+
+    try{
+        return JSON.parse(
+            localStorage.getItem("moonStarStudents") || "[]"
+        );
+    }
+    catch(e){
+        return [];
+    }
+}
+
+
+function saveStudents(data){
+
+    localStorage.setItem(
+        "moonStarStudents",
+        JSON.stringify(data)
+    );
+}
+
+
+/* =========================
+   ADD STUDENT
+   ========================= */
+
+function addStudent(){
+
+    var name=
+        document.getElementById("studentName").value.trim();
+
+    var father=
+        document.getElementById("fatherName").value.trim();
+
+    var cls=
+        document.getElementById("studentClass").value.trim();
+
+    if(name==="" || father==="" || cls===""){
+
+        alert(
+            "Please enter Student Name, Father Name and Class."
+        );
+
+        return;
+    }
+
+    var students=getStudents();
+
+    students.push({
+        id:Date.now(),
+        name:name,
+        father:father,
+        className:cls,
+        seat:""
+    });
+
+    saveStudents(students);
+
+    document.getElementById("studentName").value="";
+    document.getElementById("fatherName").value="";
+    document.getElementById("studentClass").value="";
+
+    showMessage(
+        "studentMessage",
+        "Student saved successfully."
+    );
+
+    showStudents();
+    updateReports();
+}
+
+
+/* =========================
+   SHOW STUDENTS
+   ========================= */
+
+function showStudents(){
+
+    var box=document.getElementById("studentList");
+
+    if(!box){
+        return;
+    }
+
+    var students=getStudents();
+
+    if(students.length===0){
+
+        box.innerHTML="<p>No students added yet.</p>";
+
+        return;
+    }
+
+    var html=
+        "<table>"+
+        "<tr>"+
+        "<th>#</th>"+
+        "<th>Name</th>"+
+        "<th>Father Name</th>"+
+        "<th>Class</th>"+
+        "<th>Seat</th>"+
+        "<th>Action</th>"+
+        "</tr>";
+
+    for(var i=0;i<students.length;i++){
+
+        html+=
+            "<tr>"+
+            "<td>"+(i+1)+"</td>"+
+            "<td>"+safe(students[i].name)+"</td>"+
+            "<td>"+safe(students[i].father)+"</td>"+
+            "<td>"+safe(students[i].className)+"</td>"+
+            "<td>"+safe(students[i].seat || "-")+"</td>"+
+            "<td>"+
+            "<button class='danger small-btn' onclick='deleteStudent("+students[i].id+")'>"+
+            "Delete"+
+            "</button>"+
+            "</td>"+
+            "</tr>";
+    }
+
+    html+="</table>";
+
+    box.innerHTML=html;
+}
+
+
+/* =========================
+   DELETE
+   ========================= */
+
+function deleteStudent(id){
+
+    if(!confirm("Delete this student?")){
+        return;
+    }
+
+    var students=getStudents();
+
+    students=students.filter(function(student){
+        return student.id!==id;
+    });
+
+    saveStudents(students);
+
+    showStudents();
+    showSeatStudents();
+    updateReports();
+}
+
+
+/* =========================
+   SEAT
+   ========================= */
+
+function allotSeats(){
+
+    var cls=
+        document.getElementById("seatClass").value.trim();
+
+    var start=parseInt(
+        document.getElementById("startSeat").value,
+        10
+    );
+
+    if(cls===""){
+
+        alert("Please enter class.");
+
+        return;
+    }
+
+    if(isNaN(start)){
+
+        alert("Please enter starting seat number.");
+
+        return;
+    }
+
+    var students=getStudents();
+
+    var found=0;
+
+    for(var i=0;i<students.length;i++){
+
+        if(
+            String(students[i].className).toLowerCase()===
+            cls.toLowerCase()
+        ){
+
+            students[i].seat=
+                String(start+found);
+
+            found++;
+        }
+    }
+
+    if(found===0){
+
+        alert("No students found in this class.");
+
+        return;
+    }
+
+    saveStudents(students);
+
+    showMessage(
+        "seatMessage",
+        "Seats allotted successfully."
+    );
+
+    showSeatStudents();
+    showStudents();
+}
+
+
+/* =========================
+   SHOW SEATS
+   ========================= */
+
+function showSeatStudents(){
+
+    var box=document.getElementById("seatList");
+
+    if(!box){
+        return;
+    }
+
+    var students=getStudents();
+
+    if(students.length===0){
+
+        box.innerHTML="<p>No students available.</p>";
+
+        return;
+    }
+
+    var html=
+        "<table>"+
+        "<tr>"+
+        "<th>Name</th>"+
+        "<th>Class</th>"+
+        "<th>Seat Number</th>"+
+        "</tr>";
+
+    for(var i=0;i<students.length;i++){
+
+        html+=
+            "<tr>"+
+            "<td>"+safe(students[i].name)+"</td>"+
+            "<td>"+safe(students[i].className)+"</td>"+
+            "<td>"+safe(students[i].seat || "-")+"</td>"+
+            "</tr>";
+    }
+
+    html+="</table>";
+
+    box.innerHTML=html;
+}
+
+
+/* =========================
+   SLIP CLASSES
+   ========================= */
+
+function loadSlipClasses(){
+
+    var select=document.getElementById("slipClass");
+
+    var students=getStudents();
+
+    var classes=[];
+
+    for(var i=0;i<students.length;i++){
+
+        var cls=students[i].className;
+
+        if(
+            cls &&
+            classes.indexOf(cls)===-1
+        ){
+            classes.push(cls);
+        }
+    }
+
+    classes.sort();
+
+    select.innerHTML=
+        "<option value=''>Select Class</option>";
+
+    for(var j=0;j<classes.length;j++){
+
+        var option=document.createElement("option");
+
+        option.value=classes[j];
+        option.textContent=classes[j];
+
+        select.appendChild(option);
+    }
+}
+
+
+/* =========================
+   TIMETABLE DATA
+   ========================= */
+
+var days=[
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+];
+
+
+function getTimetable(cls){
+
+    var saved=
+        localStorage.getItem(
+            "moonStarTT_"+cls
+        );
+
+    if(saved){
+
+        try{
+            return JSON.parse(saved);
+        }
+        catch(e){}
+    }
+
+    var data=[];
+
+    for(var i=0;i<days.length;i++){
+
+        data.push({
+            day:days[i],
+            subject:"",
+            time:""
+        });
+    }
+
+    return data;
+}
+
+
+/* =========================
+   FINAL SLIP DESIGN
+   ========================= */
+
+function makeSlips(){
+
+    var cls=
+        document.getElementById("slipClass").value;
+
+    var area=
+        document.getElementById("slipArea");
+
+    if(cls===""){
+
+        alert("Please select class.");
+
+        return;
+    }
+
+    var students=getStudents();
+
+    var list=students.filter(function(student){
+
+        return student.className===cls;
+
+    });
+
+    if(list.length===0){
+
+        area.innerHTML=
+            "<p>No students found.</p>";
+
+        return;
+    }
+
+    var timetable=getTimetable(cls);
+
+    var html="";
+
+    for(var i=0;i<list.length;i++){
+
+        var s=list[i];
+
+        /*
+          Every student gets:
+          LEFT = Slip Card
+          RIGHT = Time Table
+        */
+
+        html+=
+        "<div class='final-slip'>"+
+
+            "<div class='final-head'>"+
+                "🎫 SLIP CARD"+
+            "</div>"+
+
+            "<div class='final-yellow'>"+
+                "Moon Star Public High School Khanwahan"+
+            "</div>"+
+
+            "<div class='final-body'>"+
+
+                "<p><b>Student:</b> "+
+                safe(s.name)+
+                "</p>"+
+
+                "<p><b>Father:</b> "+
+                safe(s.father)+
+                "</p>"+
+
+                "<p><b>Class:</b> "+
+                safe(s.className)+
+                "</p>"+
+
+                "<p><b>Seat Number:</b> "+
+                safe(s.seat || "-")+
+                "</p>"+
+
+            "</div>"+
+
+        "</div>"+
+
+
+        "<div class='final-tt'>"+
+
+            "<div class='final-head'>"+
+                "📅 TIME TABLE"+
+            "</div>"+
+
+            "<div class='final-yellow'>"+
+                "Class: "+safe(cls)+
+            "</div>"+
+
+            "<table>"+
+
+            "<tr>"+
+            "<th>Day</th>"+
+            "<th>Subject</th>"+
+            "<th>Time</th>"+
+            "</tr>";
+
+        for(var d=0;d<timetable.length;d++){
+
+            html+=
+                "<tr>"+
+
+                "<td>"+
+                safe(timetable[d].day)+
+                "</td>"+
+
+                "<td>"+
+                safe(timetable[d].subject || "-")+
+                "</td>"+
+
+                "<td>"+
+                safe(timetable[d].time || "-")+
+                "</td>"+
+
+                "</tr>";
+        }
+
+        html+=
+            "</table>"+
+
+        "</div>";
+    }
+
+    area.innerHTML=html;
+}
+
+
+/* =========================
+   PRINT
+   ========================= */
+
+function printSlips(){
+
+    var area=
+        document.getElementById("slipArea");
+
+    if(
+        !area ||
+        area.innerHTML.trim()===""
+    ){
+
+        alert(
+            "Please generate Slip Cards first."
+        );
+
+        return;
+    }
+
+    window.print();
+}
+
+
+/* =========================
+   LOAD TIMETABLE
+   ========================= */
+
+function loadTimetable(){
+
+    var cls=
+        document.getElementById("ttClass").value.trim();
+
+    if(cls===""){
+
+        alert("Please enter class.");
+
+        return;
+    }
+
+    var data=getTimetable(cls);
+
+    var html=
+        "<div class='form-box'>"+
+
+        "<h3>📅 Class "+
+        safe(cls)+
+        " Time Table</h3>"+
+
+        "<table>"+
+
+        "<tr>"+
+        "<th>Day</th>"+
+        "<th>Subject</th>"+
+        "<th>Time</th>"+
+        "</tr>";
+
+    for(var i=0;i<data.length;i++){
+
+        html+=
+            "<tr>"+
+
+            "<td>"+
+            safe(data[i].day)+
+            "</td>"+
+
+            "<td>"+
+            "<input class='tt-input' "+
+            "id='ttSubject"+i+"' "+
+            "value='"+safeAttr(data[i].subject)+"' "+
+            "placeholder='Subject'>"+
+            "</td>"+
+
+            "<td>"+
+            "<input class='tt-input' "+
+            "id='ttTime"+i+"' "+
+            "value='"+safeAttr(data[i].time)+"' "+
+            "placeholder='Time'>"+
+            "</td>"+
+
+            "</tr>";
+    }
+
+    html+=
+        "</table>"+
+
+        "<br>"+
+
+        "<button class='success' onclick='saveTimetable()'>"+
+        "💾 Save Time Table"+
+        "</button>"+
+
+        "<div id='ttMessage' class='message'></div>"+
+
+        "</div>";
+
+    document.getElementById("ttArea").innerHTML=html;
+}
+
+
+/* =========================
+   SAVE TIMETABLE
+   ========================= */
+
+function saveTimetable(){
+
+    var cls=
+        document.getElementById("ttClass").value.trim();
+
+    if(cls===""){
+
+        alert("Please enter class.");
+
+        return;
+    }
+
+    var data=[];
+
+    for(var i=0;i<days.length;i++){
+
+        data.push({
+
+            day:days[i],
+
+            subject:
+                document.getElementById(
+                    "ttSubject"+i
+                ).value.trim(),
+
+            time:
+                document.getElementById(
+                    "ttTime"+i
+                ).value.trim()
+
+        });
+    }
+
+    localStorage.setItem(
+        "moonStarTT_"+cls,
+        JSON.stringify(data)
+    );
+
+    showMessage(
+        "ttMessage",
+        "Time Table saved successfully."
+    );
+}
+
+
+/* =========================
+   REPORTS
+   ========================= */
+
+function updateReports(){
+
+    var students=getStudents();
+
+    var box=
+        document.getElementById(
+            "reportStudents"
+        );
+
+    if(box){
+
+        box.textContent=
+            "Total Students: "+
+            students.length;
+    }
+}
+
+
+/* =========================
+   SETTINGS
+   ========================= */
+
+function saveSettings(){
+
+    var name=
+        document.getElementById(
+            "schoolName"
+        ).value.trim();
+
+    if(name===""){
+
+        alert(
+            "Please enter school name."
+        );
+
+        return;
+    }
+
+    localStorage.setItem(
+        "moonStarSchoolName",
+        name
+    );
+
+    showMessage(
+        "settingsMessage",
+        "Settings saved successfully."
+    );
+}
+
+
+function loadSettings(){
+
+    var name=
+        localStorage.getItem(
+            "moonStarSchoolName"
+        );
+
+    if(name){
+
+        var input=
+            document.getElementById(
+                "schoolName"
+            );
+
+        if(input){
+            input.value=name;
+        }
+    }
+}
+
+
+/* =========================
+   RESULTS
+   ========================= */
+
+function showResultMessage(){
+
+    var box=
+        document.getElementById(
+            "resultMessage"
+        );
+
+    box.style.display="block";
+}
+
+
+/* =========================
+   MESSAGE
+   ========================= */
+
+function showMessage(id,text){
+
+    var box=
+        document.getElementById(id);
+
+    if(!box){
+        return;
+    }
+
+    box.textContent=text;
+
+    box.style.display="block";
+
+    setTimeout(function(){
+
+        box.style.display="none";
+
+    },3000);
+}
+
+
+/* =========================
+   SECURITY
+   ========================= */
+
+function safe(value){
+
+    if(
+        value===null ||
+        value===undefined
+    ){
+
+        return "";
+    }
+
+    return String(value)
+
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+
+function safeAttr(value){
+
+    return safe(value);
+}
+
+
+/* =========================
+   START
+   ========================= */
+
+loadSettings();
+showStudents();
+updateReports();
+
+</script>
+
+</body>
 </html>
